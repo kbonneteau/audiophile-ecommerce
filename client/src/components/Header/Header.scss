@@ -1,0 +1,33 @@
+@use '../../partials/typography' as *;
+@use '../../partials/mixins' as *;
+@use '../../partials/variables' as *;
+@use '../../partials/keyframes' as *;
+
+.site-header {
+    background-color: $primary-dark;
+    color: $light-text;
+
+    &__menu-toggle{
+
+    }
+
+    &__logo {
+
+    }
+
+    &__main-navigation {
+        display: none;
+
+        @include desktop {
+            display: initial;
+        }
+    }
+
+    &__link {
+
+    }
+
+    &__cart {
+
+    }
+}
