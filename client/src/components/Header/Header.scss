@@ -6,9 +6,17 @@
 .site-header {
     background-color: $primary-dark;
     color: $light-text;
+    
+    &__wrapper {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: 2rem 0;
+        border-bottom: 1px solid #f1f1f12c;
+    }
 
     &__menu-toggle{
-
+        height: 1rem;
     }
 
     &__logo {
@@ -28,6 +36,6 @@
     }
 
     &__cart {
-
+        height: 1.25rem;
     }
 }
