@@ -8,5 +8,35 @@
 
 body {
   margin: 0;
-  font-family: $site-font;
+  @include text($site-font, 0.9375rem, 500, 1.5625rem, 0);
+}
+
+h1 {
+  @include text($site-font, 3.5rem, bold, 3.625rem, 2px);
+  text-transform: uppercase;
+}
+
+h2 {
+  @include text($site-font, 2.5rem, bold, 2.75rem, 1.5px);
+  text-transform: uppercase;
+}
+
+h3 {
+  @include text($site-font, 2rem, bold, 2.25rem, 1.15px);
+  text-transform: uppercase;
+}
+
+h4 {
+  @include text($site-font, 1.75rem, bold, 2.375rem, 2px);
+  text-transform: uppercase;
+}
+
+h5 {
+  @include text($site-font, 1.5rem, bold, 2.0625rem, 1.7px);
+  text-transform: uppercase;
+}
+
+h6 {
+  @include text($site-font, 1.125rem, bold, 1.5rem, 1.3px);
+  text-transform: uppercase;
 }
