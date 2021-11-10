@@ -1,38 +1,42 @@
-.App {
-  text-align: center;
+@use './partials/mixins' as *;
+@use './partials/variables' as *;
+@use './partials/typography' as *;
+
+*, *::before, *::after {
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  margin: 0;
+  @include text($site-font, 0.9375rem, 500, 1.5625rem, 0);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+h1 {
+  @include text($site-font, 3.5rem, bold, 3.625rem, 2px);
+  text-transform: uppercase;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+h2 {
+  @include text($site-font, 2.5rem, bold, 2.75rem, 1.5px);
+  text-transform: uppercase;
 }
 
-.App-link {
-  color: #61dafb;
+h3 {
+  @include text($site-font, 2rem, bold, 2.25rem, 1.15px);
+  text-transform: uppercase;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+h4 {
+  @include text($site-font, 1.75rem, bold, 2.375rem, 2px);
+  text-transform: uppercase;
+}
+
+h5 {
+  @include text($site-font, 1.5rem, bold, 2.0625rem, 1.7px);
+  text-transform: uppercase;
+}
+
+h6 {
+  @include text($site-font, 1.125rem, bold, 1.5rem, 1.3px);
+  text-transform: uppercase;
 }

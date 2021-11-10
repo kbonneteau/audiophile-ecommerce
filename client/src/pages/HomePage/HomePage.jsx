@@ -2,9 +2,9 @@ import './HomePage.scss';
 
 const HomePage = () => {
     return (
-        <div>
-            
-        </div>
+        <main>
+            <h1>I'm a homepage</h1>
+        </main>
     );
 };
 

@@ -1,0 +1,19 @@
+@use './typography' as *;
+
+// Media query breakpoint definitions
+$desktop-breakpoint: 1024px;
+$XL-breakpoint: 1024px;
+$tablet-breakpoint:  768px;
+$max-content-width: 69.375rem;
+
+// Site colours
+$primary-accent: #D87D4A;
+$secondary-accent: #FbAF85;
+$primary-dark: #101010;
+$primary-light: #FAFAFA; // Is this right?
+$product-card-bg: #F1F1F1;
+$light-text: #FFFFFF;
+$dark-text: #000000;
+
+// Fonts
+$site-font: 'Manrope';
