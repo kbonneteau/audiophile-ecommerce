@@ -33,10 +33,16 @@
 
     &__menu-toggle {
         height: 1rem;
+        cursor: pointer;
 
         @include desktop {
             display: none;
         }
+    }
+
+    &__logo-link {
+        display: flex;
+        align-items: center;
     }
 
     &__logo {
@@ -66,9 +72,13 @@
         @include text($site-font, 0.9375rem, 600, 1.5625rem, 2px);
         text-transform: uppercase;
 
+        &:hover {
+            color: $primary-accent;
+        }
     }
 
     &__cart {
         height: 1.25rem;
+        cursor: pointer;
     }
 }
