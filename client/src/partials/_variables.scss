@@ -1,8 +1,10 @@
 @use './typography' as *;
 
 // Media query breakpoint definitions
-$desktop-breakpoint: 1440px;
+$desktop-breakpoint: 1024px;
+$XL-breakpoint: 1024px;
 $tablet-breakpoint:  768px;
+$max-content-width: 69.375rem;
 
 // Site colours
 $primary-accent: #D87D4A;

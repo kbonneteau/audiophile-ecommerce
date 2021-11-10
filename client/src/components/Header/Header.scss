@@ -9,6 +9,8 @@
 
     @include tablet {
         padding: 0 2.5rem;
+        display: flex;
+        justify-content: center;
     }
     
     &__wrapper {
@@ -19,12 +21,22 @@
         border-bottom: 1px solid #f1f1f12c;
 
         @include tablet {
-            gap: 2.625rem
+            gap: 2.625rem;
+            max-width: $max-content-width;
+            flex-grow: 1;
+        }
+
+        @include desktop {
+            justify-content: space-between;
         }
     }
 
-    &__menu-toggle{
+    &__menu-toggle {
         height: 1rem;
+
+        @include desktop {
+            display: none;
+        }
     }
 
     &__logo {
@@ -33,6 +45,9 @@
             margin-right: auto;
         }
 
+        @include desktop {
+            margin: unset;
+        }
     }
 
     &__main-navigation {
@@ -40,10 +55,15 @@
 
         @include desktop {
             display: initial;
+            display: flex;
+            gap: 2.125rem;
         }
     }
 
     &__link {
+        text-decoration: none;
+        color: $light-text;
+        text-transform: uppercase;
 
     }
 
