@@ -6,6 +6,10 @@
 .site-header {
     background-color: $primary-dark;
     color: $light-text;
+
+    @include tablet {
+        padding: 0 2.5rem;
+    }
     
     &__wrapper {
         display: flex;
@@ -13,6 +17,10 @@
         align-items: center;
         padding: 2rem 0;
         border-bottom: 1px solid #f1f1f12c;
+
+        @include tablet {
+            gap: 2.625rem
+        }
     }
 
     &__menu-toggle{
@@ -20,6 +28,10 @@
     }
 
     &__logo {
+
+        @include tablet {
+            margin-right: auto;
+        }
 
     }
 
