@@ -4,17 +4,35 @@
 @use '../../partials/keyframes' as *;
 
 .product-category {
+    @include flex-centering;
+    flex-direction: column;
+    width: 100%;
+    max-width: 35rem;
+    position: relative;
+
+    &::before {
+        content: "";
+        height: 75%;
+        width: 100%;
+        border-radius: 8px;
+        background-color: $product-card-bg;
+        position: absolute;
+        z-index: -1;
+        bottom: 0;
+    }
 
     &__image {
-
+        width: 8rem;
     }
 
     &__title {
-
+        @include text($site-font, 0.9375rem, 600, 1, 1.07px);
+        margin-bottom: 1rem;
     }
-
+    
     &__shop-button {
         @include shop-button;
+        margin-bottom: 1.375rem;
     }
 
     &__shop-arrow {
