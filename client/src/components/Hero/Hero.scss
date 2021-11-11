@@ -8,6 +8,15 @@
     color: $light-text;
     height: 32rem;
 
+    &__wrapper {
+        background: url(http://localhost:8080/images/home/mobile-image-header.jpg);
+        height: 100%;
+        width: 100%;
+        background-position: 100% 100%;
+        background-size: cover;
+        // background-repeat: no-repeat;
+    }
+
     &__feature-title {
         @include overline-font;
         color: $primary-light;
@@ -23,22 +32,7 @@
         text-align: center;
     }
 
-    // &__wrapper {
-    //     position: relative;
-    // }
-
-    // &__featured-product-image {
-    //     position: absolute;
-    //     top: 0;
-    //     z-index: 0;
-    // }
-
-    &__wrapper {
-        background: url(http://localhost:8080/images/home/mobile-image-header.jpg);
-        height: 100%;
-        width: 100%;
-        background-position: center;
-        background-size: cover;
-        // background-repeat: no-repeat;
+    &__product-link {
+        @include primary-button;
     }
 }

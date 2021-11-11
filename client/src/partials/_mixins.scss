@@ -31,3 +31,20 @@
 @mixin subtitle-text {
     @include text($site-font, 0.8125rem, bold, 1.5625rem, 1px);
 }
+
+
+// Button styles
+@mixin primary-button {
+    @include subtitle-text;
+    color: $light-text;
+    background-color: $primary-accent;
+    padding: 1rem 2rem;
+    text-align: center;
+    text-decoration: none;
+    font-weight: normal;
+    text-transform: uppercase;
+
+    &:hover {
+        background-color: $secondary-accent;
+    }
+}

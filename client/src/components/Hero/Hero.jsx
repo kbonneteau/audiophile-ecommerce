@@ -1,5 +1,6 @@
 import './Hero.scss';
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Hero = () => {
     return (
@@ -11,6 +12,7 @@ const Hero = () => {
                     <p className="hero__featured-product-description">
                         Experience natural, lifelike audio and exceptional build quality made for the passionate music enthusiast.
                     </p>
+                    <Link className="hero__product-link" to="/">See Product</Link>
                 </div>
                 {/* <img className="hero__featured-product-image"
                     srcset="http://localhost:8080/images/home/mobile-image-header.jpg 750w,
