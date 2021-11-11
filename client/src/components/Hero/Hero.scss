@@ -14,22 +14,33 @@
         width: 100%;
         background-position: 100% 100%;
         background-size: cover;
+        display: flex;
+        padding: 1.5rem;
         // background-repeat: no-repeat;
+    }
+
+    &__featured-product-container {
+        @include flex-centering;
+        flex-direction: column;
+        gap: 1rem;
     }
 
     &__feature-title {
         @include overline-font;
-        color: $primary-light;
+        color: #f1f1f175;
     }
-
+    
     &__featured-product-name {
         font-size: 2.25rem;
         line-height: 2.5rem;
         letter-spacing: 1.29px;
+        text-align: center;
     }
 
     &__featured-product-description {
         text-align: center;
+        margin: .5rem 0 .75rem;
+        color: #f1f1f1b4;
     }
 
     &__product-link {

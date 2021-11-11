@@ -33,6 +33,14 @@
 }
 
 
+// Layout styles
+@mixin flex-centering {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
 // Button styles
 @mixin primary-button {
     @include subtitle-text;
