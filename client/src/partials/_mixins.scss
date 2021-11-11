@@ -56,3 +56,17 @@
         background-color: $secondary-accent;
     }
 }
+
+@mixin shop-button {
+    @include flex-centering;
+    @include subtitle-text;
+    font-weight: normal;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: $dark-text;
+    gap: 0.8125rem;
+
+    &:hover {
+        color: $primary-accent;
+    }
+}

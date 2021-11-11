@@ -3,9 +3,21 @@
 @use '../../partials/variables' as *;
 @use '../../partials/keyframes' as *;
 
-.product-categories {
+.product-category {
 
-    &__wrapper {
+    &__image {
+
+    }
+
+    &__title {
+
+    }
+
+    &__shop-button {
+        @include shop-button;
+    }
+
+    &__shop-arrow {
 
     }
 }
