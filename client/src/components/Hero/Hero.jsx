@@ -12,7 +12,17 @@ const Hero = () => {
                         Experience natural, lifelike audio and exceptional build quality made for the passionate music enthusiast.
                     </p>
                 </div>
-                <img src="" alt="" className="hero__featured-product-image" />
+                {/* <img className="hero__featured-product-image"
+                    srcset="http://localhost:8080/images/home/mobile-image-header.jpg 750w,
+                            http://localhost:8080/images/home/tablet-image-header.jpg 1536w,
+                            http://localhost:8080/images/home/desktop-image-hero.jpg 1440w"
+                    sizes="(max-width: 767px) 320px,
+                           (max-width: 1079px) 1080px,
+                           1080px"
+                    src="http://localhost:8080/images/home/desktop-image-hero.jpg"
+                    alt="" /> */}
+
+                {/* <img src="" alt="" className="hero__featured-product-image" /> */}
             </div>
         </section>
     );

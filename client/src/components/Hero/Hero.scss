@@ -7,4 +7,38 @@
     background-color: $primary-dark;
     color: $light-text;
     height: 32rem;
+
+    &__feature-title {
+        @include overline-font;
+        color: $primary-light;
+    }
+
+    &__featured-product-name {
+        font-size: 2.25rem;
+        line-height: 2.5rem;
+        letter-spacing: 1.29px;
+    }
+
+    &__featured-product-description {
+        text-align: center;
+    }
+
+    // &__wrapper {
+    //     position: relative;
+    // }
+
+    // &__featured-product-image {
+    //     position: absolute;
+    //     top: 0;
+    //     z-index: 0;
+    // }
+
+    &__wrapper {
+        background: url(http://localhost:8080/images/home/mobile-image-header.jpg);
+        height: 100%;
+        width: 100%;
+        background-position: center;
+        background-size: cover;
+        // background-repeat: no-repeat;
+    }
 }
