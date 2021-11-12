@@ -8,7 +8,6 @@ const ProductFeatures = () => {
     return (
         <section className="product-features">
             <div className="product-features__wrapper">
-                Product Features
                 <PrimaryProductFeature />
                 <SecondaryProductFeature />
                 <TertiaryProductFeature />
