@@ -5,10 +5,28 @@
 
 .product-categories {
 
+    @include tablet {
+        @include flex-centering;
+    }
+
     &__wrapper {
         @include flex-centering;
-        margin: 2.5rem 1.5rem;
         flex-direction: column;
+        margin: 2.5rem 1.5rem;
         gap: 1rem;
+
+        @include tablet {
+            flex-direction: row;
+            align-items: flex-start;
+            gap: 0.625rem;
+            max-width: $max-content-width;
+            flex-grow: 1;
+            margin: 6rem 2.5rem;
+        }
+        
+        @include desktop {
+            gap: 1.875rem;
+            margin: 7.5rem 0;
+        }
     }
 }
