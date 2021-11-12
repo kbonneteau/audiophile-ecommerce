@@ -2,3 +2,31 @@
 @use '../../partials/mixins' as *;
 @use '../../partials/variables' as *;
 @use '../../partials/keyframes' as *;
+
+.primary-feature {
+    background-color: $primary-accent;
+    border-radius: 8px;
+    padding: 3.5rem 0;
+    height: 100%;
+
+    &__image {
+
+    }
+
+    &__product-name {
+
+    }
+
+    &__copy {
+
+    }
+
+    &__product-link {
+        @include primary-button;
+        background-color: $dark-text;
+
+        &:hover {
+            background-color: #4C4C4C;
+        }
+    }
+}

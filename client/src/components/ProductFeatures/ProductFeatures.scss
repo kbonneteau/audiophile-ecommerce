@@ -3,3 +3,9 @@
 @use '../../partials/variables' as *;
 @use '../../partials/keyframes' as *;
 
+.product-features {
+    
+    &__wrapper {
+        margin: 0 1.5rem;
+    }
+}

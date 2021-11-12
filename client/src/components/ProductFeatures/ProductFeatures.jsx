@@ -7,10 +7,12 @@ import TertiaryProductFeature from '../TertiaryProductFeature/TertiaryProductFea
 const ProductFeatures = () => {
     return (
         <section className="product-features">
-            Product Features
-            <PrimaryProductFeature />
-            <SecondaryProductFeature />
-            <TertiaryProductFeature />
+            <div className="product-features__wrapper">
+                Product Features
+                <PrimaryProductFeature />
+                <SecondaryProductFeature />
+                <TertiaryProductFeature />
+            </div>
         </section>
     );
 };
