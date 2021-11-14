@@ -1,11 +1,15 @@
 import './SecondaryProductFeature.scss';
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const SecondaryProductFeature = () => {
     return (
-        <div>
-            Secondary feature
-        </div>
+        <article className="secondary-feature">
+            <div className="secondary-feature__content-container">
+                <h2 className="secondary-feature__product-name">ZX7 SPEAKER</h2>
+                <Link className="secondary-feature__product-link" to="/">See Product</Link>
+            </div>
+        </article>
     );
 };
 

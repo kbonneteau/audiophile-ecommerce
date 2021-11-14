@@ -13,10 +13,6 @@
     height: 100%;
     gap: 1.5rem;
 
-    @include tablet {
-        // height: calc(45rem - 7rem);
-    }
-
     @include desktop {
         flex-direction: row;
         justify-content: space-evenly;

@@ -51,10 +51,21 @@
     text-decoration: none;
     font-weight: normal;
     text-transform: uppercase;
-
+    
     &:hover {
         background-color: $secondary-accent;
     }
+}
+
+@mixin secondary-button {
+    color: $dark-text;
+    border: 2px solid $dark-text;
+    padding: 1rem 0;
+    width: 10rem;
+    text-align: center;
+    text-decoration: none;
+    font-weight: normal;
+    text-transform: uppercase;
 }
 
 @mixin shop-button {
@@ -69,4 +80,13 @@
     &:hover {
         color: $primary-accent;
     }
+}
+
+
+// Wrapper styles
+@mixin tablet-wrapper {
+    max-width: $max-content-width;
+    flex-grow: 1;
+    margin-left: 2.5rem;
+    margin-right: 2.5rem;
 }
