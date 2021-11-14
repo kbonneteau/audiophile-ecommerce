@@ -66,6 +66,11 @@
     text-decoration: none;
     font-weight: normal;
     text-transform: uppercase;
+
+    &:hover {
+        background-color: $dark-text;
+        color: $light-text;
+    }
 }
 
 @mixin shop-button {

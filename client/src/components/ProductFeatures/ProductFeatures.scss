@@ -18,11 +18,13 @@
         @include tablet {
             max-width: $max-content-width;
             flex-grow: 1;
-            margin: 7.5rem 2.5rem;
+            margin: 6rem 2.5rem;
+            gap: 2rem;
         }
-
+        
         @include desktop {
-            margin: 7.5rem 0;
+            margin: 3.5rem 0;
+            gap: 3rem;
         }
     }
 }
