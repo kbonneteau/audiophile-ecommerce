@@ -1,0 +1,47 @@
+@use '../../partials/typography' as *;
+@use '../../partials/mixins' as *;
+@use '../../partials/variables' as *;
+@use '../../partials/keyframes' as *;
+@use '../Header/Header.scss';
+
+.site-footer {
+    background-color: $primary-dark;
+    background-color: #191919;
+    color: $light-text;
+
+    &__wrapper {
+
+    }
+
+    &__logo-link {
+        @extend .site-header__logo-link;
+    }
+
+    &__logo {
+
+    }
+
+    &__site-map {
+
+    }
+
+    &__link {
+        @extend .site-header__link;
+    }
+
+    &__about {
+
+    }
+
+    &__copyright {
+
+    }
+
+    &__social-container {
+
+    }
+
+    &__social-link {
+
+    }
+}
