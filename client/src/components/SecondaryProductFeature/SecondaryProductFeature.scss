@@ -1,0 +1,48 @@
+@use '../../partials/typography' as *;
+@use '../../partials/mixins' as *;
+@use '../../partials/variables' as *;
+@use '../../partials/keyframes' as *;
+
+.secondary-feature {
+    height: 20rem;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 8px;
+    background-image: url(http://localhost:8080/images/home/mobile-image-speaker-zx7.jpg);
+    background-size: cover;
+    background-position: center;
+
+    @include tablet {
+        background-image: url(http://localhost:8080/images/home/tablet-image-speaker-zx7.jpg);
+    }
+    
+    @include desktop {
+        background-image: url(http://localhost:8080/images/home/desktop-image-speaker-zx7.jpg);
+    }
+    
+    &__content-container {
+        padding-left: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+
+        @include tablet {
+            padding-left: 3.875rem;
+        }
+
+        @include desktop {
+            padding-left: 6rem;
+        }
+    }
+
+    &__product-name {
+        font-size: 1.75rem;
+        letter-spacing: 2px;
+    }
+
+    &__product-link {
+        @include secondary-button;
+        font-weight: 500;
+    }
+}

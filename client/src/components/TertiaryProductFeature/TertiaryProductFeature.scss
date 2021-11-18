@@ -1,0 +1,59 @@
+@use '../../partials/typography' as *;
+@use '../../partials/mixins' as *;
+@use '../../partials/variables' as *;
+@use '../../partials/keyframes' as *;
+@use '../SecondaryProductFeature/SecondaryProductFeature.scss';
+
+.tertiary-feature {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    
+    @include tablet {
+        gap: 0.6875rem;
+        flex-direction: row;
+    }
+
+    @include desktop {
+        gap: 1.875rem;
+    }
+
+    &__product-image {
+        background-image: url(http://localhost:8080/images/home/mobile-image-earphones-yx1.jpg);
+        background-size: cover;
+        background-position: center;
+        height: 12.5rem;
+        border-radius: 8px;
+        
+        @include tablet {
+            background-image: url(http://localhost:8080/images/home/tablet-image-earphones-yx1.jpg);
+            flex-basis: 50%;
+            height: 20rem;
+        }
+        
+        @include desktop {
+            background-image: url(http://localhost:8080/images/home/desktop-image-earphones-yx1.jpg);
+        }
+    }
+    
+    &__product-details {
+        @extend .secondary-feature__content-container;
+        justify-content: center;
+        background-color: $product-card-bg;
+        height: 12.5rem;
+        border-radius: 8px;
+
+        @include tablet {
+            flex-basis: 50%;
+            height: 20rem;
+        }
+    }
+
+    &__product-name {
+        @extend .secondary-feature__product-name;
+    }
+
+    &__product-link {
+        @extend .secondary-feature__product-link;
+    }
+}

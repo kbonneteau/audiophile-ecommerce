@@ -1,0 +1,60 @@
+@use '../../partials/typography' as *;
+@use '../../partials/mixins' as *;
+@use '../../partials/variables' as *;
+@use '../../partials/keyframes' as *;
+
+.product-category {
+    @include flex-centering;
+    flex-direction: column;
+    width: 100%;
+    max-width: 35rem;
+    position: relative;
+    
+    @include tablet {
+        justify-content: flex-end;
+        height: 12.625rem;
+        max-width: 21.875rem;
+    }
+    
+    @include desktop {
+        height: 17.75rem;
+    }
+
+    &::before {
+        content: "";
+        height: 75%;
+        width: 100%;
+        border-radius: 8px;
+        background-color: $product-card-bg;
+        position: absolute;
+        z-index: -1;
+        bottom: 0;
+        
+        @include desktop {
+            height: 70%;
+        }
+    }
+
+    &__image {
+        width: 8rem;
+
+        @include desktop {
+            width: 13rem;
+        }
+    }
+
+    &__title {
+        @include text($site-font, 0.9375rem, 600, 1, 1.07px);
+        margin-bottom: 1rem;
+
+        @include desktop {
+            font-size: 1.125rem;
+            letter-spacing: 1.29px;
+        }
+    }
+    
+    &__shop-button {
+        @include shop-button;
+        margin-bottom: 1.375rem;
+    }
+}

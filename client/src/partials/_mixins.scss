@@ -31,3 +31,73 @@
 @mixin subtitle-text {
     @include text($site-font, 0.8125rem, bold, 1.5625rem, 1px);
 }
+
+
+// Layout styles
+@mixin flex-centering {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin flex-centered-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+// Button styles
+@mixin primary-button {
+    @include subtitle-text;
+    color: $light-text;
+    background-color: $primary-accent;
+    padding: 1rem 2rem;
+    text-align: center;
+    text-decoration: none;
+    font-weight: normal;
+    text-transform: uppercase;
+    
+    &:hover {
+        background-color: $secondary-accent;
+    }
+}
+
+@mixin secondary-button {
+    color: $dark-text;
+    border: 2px solid $dark-text;
+    padding: 1rem 0;
+    width: 10rem;
+    text-align: center;
+    text-decoration: none;
+    font-weight: normal;
+    text-transform: uppercase;
+
+    &:hover {
+        background-color: $dark-text;
+        color: $light-text;
+    }
+}
+
+@mixin shop-button {
+    @include flex-centering;
+    @include subtitle-text;
+    font-weight: normal;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: $dark-text;
+    gap: 0.8125rem;
+
+    &:hover {
+        color: $primary-accent;
+    }
+}
+
+
+// Wrapper styles
+@mixin tablet-wrapper {
+    max-width: $max-content-width;
+    flex-grow: 1;
+    margin-left: 2.5rem;
+    margin-right: 2.5rem;
+}

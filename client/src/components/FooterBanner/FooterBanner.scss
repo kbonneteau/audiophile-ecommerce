@@ -1,0 +1,98 @@
+@use '../../partials/typography' as *;
+@use '../../partials/mixins' as *;
+@use '../../partials/variables' as *;
+@use '../../partials/keyframes' as *;
+
+.footer-banner {
+    @include flex-centering;
+    
+    &__wrapper {
+        width: 100%;
+        padding: 0 1.5rem;
+        @include flex-centered-column;
+        gap: 2rem;
+        margin-bottom: 7.5rem;
+        
+        @include tablet {
+            margin-bottom: 6rem;
+            padding: 0 2.5rem;
+            max-width: $max-content-width;
+        }
+
+        @include desktop {
+            margin: 9rem 0 12.5rem;
+            padding: 0;
+            gap: 0;
+            flex-direction: row-reverse;
+            justify-content: space-between;
+        }
+    }
+
+    &__image {
+        background-image: url(http://localhost:8080/images/home/mobile-best-gear.jpg);
+        background-position: center;
+        background-size: cover;
+        margin: 0;
+        height: 20rem;
+        margin-bottom: .5rem;
+        border-radius: .5rem;
+        width: 100%;
+        
+        @include tablet {
+            background-image: url(http://localhost:8080/images/home/tablet-best-gear.jpg);
+        }
+        
+        @include desktop {
+            background-image: url(http://localhost:8080/images/home/desktop-best-gear.jpg);
+            width: 33.75rem;
+            height: 36.75rem;
+        }
+    }
+
+    &__content-container {
+        @include flex-centered-column;
+        gap: 2rem;
+
+        @include desktop {
+            align-items: flex-start;
+        }
+    }
+
+    &__title {
+        text-align: center;
+        font-weight: 600;
+        letter-spacing: 1px;
+        font-size: 1.75rem;
+
+        @include tablet {
+            font-size: 2.5rem;
+            line-height: 2.75rem;
+            letter-spacing: 1.43px;
+            max-width: 20ch;
+        }
+
+        @include desktop {
+            text-align: left;
+            max-width: 18ch;
+        }
+
+        &--emphasis {
+            color: $primary-accent;
+        }
+    }
+
+    &__description {
+        margin: 0;
+        text-align: center;
+        color: #979797;
+
+        @include tablet {
+            max-width: 62ch;
+        }
+
+        @include desktop {
+            max-width: 47ch;
+            text-align: left;
+        }
+    }
+}
