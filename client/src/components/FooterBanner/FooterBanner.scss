@@ -84,7 +84,7 @@
     &__description {
         margin: 0;
         text-align: center;
-        color: #979797;
+        color: $alt-text;
 
         @include tablet {
             max-width: 62ch;

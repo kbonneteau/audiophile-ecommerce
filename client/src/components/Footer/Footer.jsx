@@ -2,6 +2,9 @@ import './Footer.scss';
 import React from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import companyLogo from '../../assets/images/logo.svg';
+import facebookIcon from '../../assets/icons/icon-facebook.svg';
+import twitterIcon from '../../assets/icons/icon-twitter.svg';
+import instagramIcon from '../../assets/icons/icon-instagram.svg';
 
 const Footer = () => {
     return (
@@ -23,12 +26,15 @@ const Footer = () => {
                     Copyright 2021. All Rights Reserved
                 </p>
                 <div className="site-footer__social-container">
-                    {/* <img src="" alt="" className="site-footer__social-link" /> */}
-                    {/* <img src="" alt="" className="site-footer__social-link" /> */}
-                    {/* <img src="" alt="" className="site-footer__social-link" /> */}
-                    facebook
-                    twitter
-                    insta
+                    <a href="https://www.facebook.com" target="_blank" rel="noreferrer" className="site-footer__social-link">
+                        <img src={facebookIcon} alt="facebook logo" className="site-footer__social-icon" />
+                    </a>
+                    <a href="https://www.twitter.com" target="_blank" rel="noreferrer" className="site-footer__social-link">
+                        <img src={twitterIcon} alt="twitter logo" className="site-footer__social-icon" />
+                    </a>
+                    <a href="https://www.instagram.com" target="_blank" rel="noreferrer" className="site-footer__social-link">
+                        <img src={instagramIcon} alt="instagram logo" className="site-footer__social-icon" />
+                    </a>
                 </div>
             </div>
         </footer>
