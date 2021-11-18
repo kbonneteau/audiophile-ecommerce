@@ -5,12 +5,11 @@
 
 .footer-banner {
     @include flex-centering;
-
+    
     &__wrapper {
+        width: 100%;
         padding: 0 1.5rem;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+        @include flex-centered-column;
         gap: 2rem;
         margin-bottom: 7.5rem;
         
@@ -23,6 +22,9 @@
         @include desktop {
             margin: 9rem 0 12.5rem;
             padding: 0;
+            gap: 0;
+            flex-direction: row-reverse;
+            justify-content: space-between;
         }
     }
 
@@ -33,7 +35,7 @@
         margin: 0;
         height: 20rem;
         margin-bottom: .5rem;
-        border-radius: 8px;
+        border-radius: .5rem;
         width: 100%;
         
         @include tablet {
@@ -42,6 +44,17 @@
         
         @include desktop {
             background-image: url(http://localhost:8080/images/home/desktop-best-gear.jpg);
+            width: 33.75rem;
+            height: 36.75rem;
+        }
+    }
+
+    &__content-container {
+        @include flex-centered-column;
+        gap: 2rem;
+
+        @include desktop {
+            align-items: flex-start;
         }
     }
 
@@ -55,7 +68,12 @@
             font-size: 2.5rem;
             line-height: 2.75rem;
             letter-spacing: 1.43px;
-            // max-width: 20ch;
+            max-width: 20ch;
+        }
+
+        @include desktop {
+            text-align: left;
+            max-width: 18ch;
         }
 
         &--emphasis {
@@ -69,7 +87,12 @@
         color: #979797;
 
         @include tablet {
-            max-width: 52ch;
+            max-width: 62ch;
+        }
+
+        @include desktop {
+            max-width: 47ch;
+            text-align: left;
         }
     }
 }

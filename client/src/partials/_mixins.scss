@@ -40,6 +40,12 @@
     justify-content: center;
 }
 
+@mixin flex-centered-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 
 // Button styles
 @mixin primary-button {
