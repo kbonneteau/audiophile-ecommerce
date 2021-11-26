@@ -5,6 +5,7 @@ const logger = require('morgan');
 require('dotenv').config();
 // routes
 const productRoutes = require('./routes/products');
+const categoryRoutes = require('./routes/category');
 
 const app = express();
 const PORT = process.env.PORT || 8000;
@@ -18,5 +19,6 @@ app.use(cors());
 
 // Routes
 app.use('/products', productRoutes);
+app.use('/category', categoryRoutes);
 
 app.listen(PORT, () => console.log(`Listening on port ${PORT} 🚀`));
