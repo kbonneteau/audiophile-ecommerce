@@ -15,9 +15,9 @@ const Footer = () => {
                 </Link>
                 <nav className="site-footer__site-map">
                     <NavLink className="site-footer__link" to="/">Home</NavLink>
-                    <NavLink className="site-footer__link" to="/">Headphones</NavLink>
-                    <NavLink className="site-footer__link" to="/">Speakers</NavLink>
-                    <NavLink className="site-footer__link" to="/">Earphones</NavLink>
+                    <NavLink className="site-footer__link" to="/headphones">Headphones</NavLink>
+                    <NavLink className="site-footer__link" to="/speakers">Speakers</NavLink>
+                    <NavLink className="site-footer__link" to="/earphones">Earphones</NavLink>
                 </nav>
                 <p className="site-footer__about">
                     Audiophile is an all in one stop to fulfill your audio needs. We're a small team of music lovers and sound specialists who are devoted to helping you get the most out of personal audio. Come and visit our demo facility - we’re open 7 days a week.
