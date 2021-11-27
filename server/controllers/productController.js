@@ -24,9 +24,20 @@ let productController = {
         Returns all products related to a product category
     */
     getProductByCategory: async (req, res) => {
-        const products = await productModel.readProductsByCategory(req.params.categoryName);
-        products.length > 0
-            ? res.status(200).json(products)
+        const products = await productModel.readProductsByCategory(req.params.categoryName)
+        const updatedProducts = products.map(product => {
+            return {
+                name: product.name,
+                description: product.description,
+                image: product.image,
+                slug: product.slug,
+                new: product.new,
+                id: product.id,
+                price: product.price
+            }
+        });
+        updatedProducts.length > 0
+            ? res.status(200).json(updatedProducts)
             : res.status(404).json({ error: `No products found in ${req.params.categoryName} category`});
     }
 };
