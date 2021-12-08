@@ -7,12 +7,15 @@ module.exports = async function connectToDatabase() {
     // return the cached versions if they exist
     if (cachedDb) return cachedDb;
 
-    const client = await MongoClient.connect(uri, {
-        useNewUrlParser: true, 
-        useUnifiedTopology: true 
-    });
-    
-    const db = client.db("audiophile");
-    cachedDb = db;
-    return db;
+    try {
+        const client = await MongoClient.connect(uri, {
+            useNewUrlParser: true, 
+            useUnifiedTopology: false 
+        });
+        const db = client.db("audiophile");
+        cachedDb = db;
+        return db;
+    } catch {
+        console.log("error in database connection");
+    }
 };

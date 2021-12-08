@@ -17,12 +17,18 @@ const ProductCategoryPage = () => {
      */
     const getProducts = async () => {
         console.log("getting products")
-        const { data } = await axios.get(`${API_BASE_URL}${API_CATEGORY}/${categoryName}`);
-        const sortedProducts = data.sort((a,b) => b.price - a.price);
-        setProducts(sortedProducts);
+        try{
+            const { data } = await axios.get(`${API_BASE_URL}${API_CATEGORY}/${categoryName}`);
+            const sortedProducts = data.sort((a,b) => b.price - a.price);
+            setProducts(sortedProducts);
+            console.log("products", sortedProducts);
+        } catch {
+            console.log("error in fetching products");
+        }
     };
     
     useEffect(() => {
+        document.title = `Audiophile | ${categoryName}`;
         // Checks if products exist or if the current category is different from the categoryName
         (!products || categoryName !== currentCategory) && getProducts();
         if(categoryName !== currentCategory) setCurrentCategory(categoryName);
