@@ -39,7 +39,7 @@ const ProductCategoryPage = () => {
         <main>
             <CategoryHeader category={categoryName} />
             {products && (
-                products.map(product => <ProductCard key={product.id} product={product} />)
+                products.map(product => <ProductCard key={product.id} product={product} categoryName={categoryName} />)
             )}
             
         </main>
