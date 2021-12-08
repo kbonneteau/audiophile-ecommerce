@@ -1,0 +1,14 @@
+@use '../../partials/typography' as *;
+@use '../../partials/mixins' as *;
+@use '../../partials/variables' as *;
+@use '../../partials/keyframes' as *;
+
+.secondary-footer {
+    @include flex-centered-column;
+    gap: 5rem;
+    margin-top: 1.25rem;
+    
+    &__wrapper {
+        width: 100%;
+    }
+}

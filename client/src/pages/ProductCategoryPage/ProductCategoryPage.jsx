@@ -4,6 +4,7 @@ import axios from 'axios';
 import { API_BASE_URL, API_CATEGORY } from '../../utils/ApiUtils';
 import CategoryHeader from '../../components/CategoryHeader/CategoryHeader';
 import ProductCard from '../../components/ProductCard/ProductCard';
+import SecondaryFooter from '../../components/SecondaryFooter/SecondaryFooter';
 
 const ProductCategoryPage = () => {
     const { categoryName } = useParams();
@@ -41,7 +42,7 @@ const ProductCategoryPage = () => {
             {products && (
                 products.map(product => <ProductCard key={product.id} product={product} categoryName={categoryName} />)
             )}
-            
+            <SecondaryFooter />
         </main>
     );
 };

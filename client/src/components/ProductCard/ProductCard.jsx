@@ -12,7 +12,7 @@ const ProductCard = ({ product, categoryName }) => {
             }
             <h2 className="product-card__product-name">{product.name}</h2>
             <p className="product-card__description">{product.description}</p>
-            <Link to={`/${categoryName}/${product.id}`}>See Product</Link>
+            <Link className="product-card__product-link" to={`/${categoryName}/${product.id}`}>See Product</Link>
         </article>
     );
 };

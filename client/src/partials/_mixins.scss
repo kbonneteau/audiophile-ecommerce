@@ -52,7 +52,7 @@
     @include subtitle-text;
     color: $light-text;
     background-color: $primary-accent;
-    padding: 1rem 2rem;
+    padding: calc((3rem - 1.5625rem) / 2) 2rem; // (max container size - line height) / 2
     text-align: center;
     text-decoration: none;
     font-weight: normal;

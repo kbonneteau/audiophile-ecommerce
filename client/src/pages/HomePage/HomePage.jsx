@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import Hero from '../../components/Hero/Hero';
 import ProductCategoryList from '../../components/ProductCategoryList/ProductCategoryList';
 import ProductFeatures from '../../components/ProductFeatures/ProductFeatures';
-import FooterBanner from '../../components/FooterBanner/FooterBanner';
+import MissionStatement from '../../components/MissionStatement/MissionStatement';
 
 const HomePage = () => {
     useEffect(() => {
@@ -15,7 +15,7 @@ const HomePage = () => {
             <Hero />
             <ProductCategoryList />
             <ProductFeatures />
-            <FooterBanner />
+            <MissionStatement />
         </main>
     );
 };

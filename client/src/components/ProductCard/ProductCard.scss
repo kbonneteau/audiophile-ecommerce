@@ -6,7 +6,6 @@
 .product-card {
     @include flex-centered-column;
     gap: 1.5rem;
-    // width: 100vw;
     padding: 3.75rem 1.5rem;
 
     &__product-image {
@@ -22,9 +21,15 @@
 
     &__product-name {
         text-align: center;
+        font-weight: 600;
     }
     
     &__description {
         text-align: center;
+        color: $alt-text;
+    }
+
+    &__product-link {
+        @include primary-button;
     }
 }
