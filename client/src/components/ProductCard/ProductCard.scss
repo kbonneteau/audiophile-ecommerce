@@ -6,12 +6,49 @@
 .product-card {
     @include flex-centered-column;
     gap: 1.5rem;
-    padding: 3.75rem 1.5rem;
-
+    margin: 3.75rem 1.5rem;
+    
+    @include tablet {
+        margin: 7.5rem 2.5rem;
+        gap: 1rem;
+    }
+    
+    @include desktop {
+        flex-direction: row;
+        max-width: $max-content-width;
+        margin: 10rem auto 5rem;
+        gap: 7.5rem;
+    }
+    
+    &:nth-child(odd) {
+        @include desktop {
+            flex-direction: row-reverse;
+        }
+    }
+    
     &__product-image {
         width: 100%;
         border-radius: .5rem;
         margin-bottom: .5rem;
+        
+        @include tablet {
+            margin-bottom: 2.25rem;
+        }
+
+        @include desktop {
+            margin: 0;
+            width: 33.75rem;
+            height: 33.75rem;
+        }
+    }
+    
+    &__details-container {
+        @include flex-centered-column;
+        gap: 1.5rem;
+
+        @include desktop {
+            align-items: flex-start;
+        }
     }
 
     &__new-product {
@@ -22,13 +59,33 @@
     &__product-name {
         text-align: center;
         font-weight: 600;
+        font-size: 28px;
+
+        @include tablet {
+            font-size: 40px;
+            max-width: 20ch;
+        }
+
+        @include desktop {
+            text-align: left;
+        }
     }
     
     &__description {
         text-align: center;
         color: $alt-text;
-    }
+        
+        @include tablet {
+            font-weight: 400;
+            max-width: 60ch;
+        }
 
+        @include desktop {
+            text-align: left;
+            font-wight: 500;
+        }
+    }
+        
     &__product-link {
         @include primary-button;
     }

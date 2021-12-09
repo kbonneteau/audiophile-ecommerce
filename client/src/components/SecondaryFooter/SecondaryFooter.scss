@@ -8,6 +8,11 @@
     gap: 5rem;
     margin-top: 1.25rem;
     
+    @include tablet {
+        gap: 1.5rem;
+        margin: -2.25rem 0 1.5rem;
+    }
+    
     &__wrapper {
         width: 100%;
     }

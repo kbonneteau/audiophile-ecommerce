@@ -8,8 +8,8 @@ const SecondaryFooter = () => {
         <aside className="secondary-footer">
             <div className="secondary-footer__wrapper">
                 <ProductCategoryList />
+                <MissionStatement />
             </div>
-            <MissionStatement />
         </aside>
     );
 };
