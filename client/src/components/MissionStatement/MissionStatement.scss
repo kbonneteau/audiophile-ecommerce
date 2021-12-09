@@ -3,7 +3,7 @@
 @use '../../partials/variables' as *;
 @use '../../partials/keyframes' as *;
 
-.footer-banner {
+.mission-statement {
     @include flex-centering;
     
     &__wrapper {

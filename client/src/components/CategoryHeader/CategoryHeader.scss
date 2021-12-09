@@ -1,0 +1,28 @@
+@use '../../partials/typography' as *;
+@use '../../partials/mixins' as *;
+@use '../../partials/variables' as *;
+@use '../../partials/keyframes' as *;
+
+.category-heading {
+    background-color: $dark-background;
+    @include flex-centering;
+
+    &__title {
+        color: $primary-light;
+        padding: 2rem 0;
+        font-size: 1.75rem;
+        letter-spacing: 2px;
+        line-height: unset;
+        
+        @include tablet {
+            padding: 6.625rem 0 6.125rem;
+            font-size: 2.55rem;
+            letter-spacing: 1.43px;
+            line-height: 44px;
+        }
+        
+        @include desktop {
+            padding: 6.125rem 0;
+        }
+    }
+}

@@ -6,8 +6,13 @@ const connectToDatabase = require("../connect-to-database");
  * @returns {array} of all products
  */
 const readAllProducts = async () => {
-    const db = await connectToDatabase();
-    return await db.collection("products").find({}).toArray();
+    try {
+        const db = await connectToDatabase();
+        return await db.collection("products").find({}).toArray();
+    } catch {
+        console.log("error in reading products");
+        return false;
+    }
 };
 
 /**
@@ -16,9 +21,14 @@ const readAllProducts = async () => {
  * @returns {array} of all products by category
  */
 const readProductsByCategory = async category => {
-    const db = await connectToDatabase();
-    const results = await db.collection("products").find({ category: category }).toArray();
-    return results;
+    try {
+        const db = await connectToDatabase();
+        const results = await db.collection("products").find({ category: category }).toArray();
+        return results;
+    } catch {
+        console.log("error in reading products");
+        return false;
+    }
 };
 
 module.exports = {

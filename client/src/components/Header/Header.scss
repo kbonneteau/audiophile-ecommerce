@@ -5,7 +5,7 @@
 
 .site-header {
     background-color: $primary-dark;
-    background-color: #191919;
+    background-color: $dark-background;
     color: $light-text;
 
     @include tablet {
