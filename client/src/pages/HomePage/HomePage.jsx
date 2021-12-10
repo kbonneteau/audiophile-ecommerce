@@ -8,6 +8,7 @@ import MissionStatement from '../../components/MissionStatement/MissionStatement
 const HomePage = () => {
     useEffect(() => {
         document.title = `Audiophile`;
+        window.scrollTo(0, 0);
     }, [])
 
     return (

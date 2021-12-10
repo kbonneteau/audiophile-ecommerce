@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import { API_BASE_URL, API_CATEGORY } from '../../utils/ApiUtils';
+import { API_BASE_URL, API_CATEGORY } from '../../utils/apiUtils';
 import CategoryHeader from '../../components/CategoryHeader/CategoryHeader';
 import ProductCard from '../../components/ProductCard/ProductCard';
 import SecondaryFooter from '../../components/SecondaryFooter/SecondaryFooter';
@@ -30,6 +30,7 @@ const ProductCategoryPage = () => {
     
     useEffect(() => {
         document.title = `Audiophile | ${categoryName}`;
+        window.scrollTo(0, 0);
         // Checks if products exist or if the current category is different from the categoryName
         (!products || categoryName !== currentCategory) && getProducts();
         if(categoryName !== currentCategory) setCurrentCategory(categoryName);
