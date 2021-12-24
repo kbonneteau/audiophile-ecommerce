@@ -13,6 +13,13 @@
   @include tablet {
     flex-direction: row;
     gap: 4.3125rem;
+    max-width: $max-content-width;
+    flex-grow: 1;
+  }
+
+  @include desktop {
+    padding: 0.5rem 0;
+    gap: 7.75rem;
   }
 
   &__image {
@@ -22,6 +29,10 @@
     @include tablet {
       width: auto;
       height: 30rem;
+    }
+
+    @include desktop {
+      height: 35rem;
     }
   }
 
@@ -42,11 +53,16 @@
   &__name {
     font-size: 1.75rem;
     font-weight: 600;
-    line-height: 40px;
+    line-height: 2.5rem;
 
     @include tablet {
-      line-height: 32px;
+      line-height: 2rem;
       max-width: 20ch;
+    }
+
+    @include desktop {
+      font-size: 2.5rem;
+      line-height: 2.75rem;
     }
   }
 
@@ -59,6 +75,10 @@
     @include tablet {
       margin: 1rem 0;
     }
+
+    @include desktop {
+      max-width: 48ch;
+    }
   }
 
   &__price {
@@ -68,6 +88,10 @@
 
     @include tablet {
       margin-bottom: 1rem;
+    }
+
+    @include desktop {
+      margin-bottom: 1.75rem;
     }
   }
 

@@ -4,18 +4,37 @@
 @use "../../partials/keyframes" as *;
 
 .product-page {
+  @include flex-centered-column;
+
+  @include desktop {
+    padding: 0 2.5rem;
+  }
+
+  &__wrapper {
+    margin-left: 0.5rem;
+
+    @include tablet {
+      margin: 1rem 0 0.5rem 0.5rem;
+      width: 100%;
+      max-width: $max-content-width;
+    }
+
+    @include desktop {
+      margin: 3.9375rem 0 2.5rem 0.5rem;
+    }
+  }
+
   &__back-button {
     border: none;
     background: none;
     color: $alt-text;
     font-size: 1rem;
     line-height: 1.6rem;
-    margin-left: 0.5rem;
     padding: 1rem;
     cursor: pointer;
 
-    @include tablet {
-      margin: 1rem 0 0.5rem 1.5rem;
+    @include desktop {
+      padding-left: 0;
     }
 
     &:hover {

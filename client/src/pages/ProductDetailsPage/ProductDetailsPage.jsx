@@ -40,9 +40,11 @@ const ProductDetailsPage = () => {
 
   return !selectedProduct ? null : (
     <main className="product-page">
-      <button className="product-page__back-button" onClick={handleClick}>
-        Go Back
-      </button>
+      <div className="product-page__wrapper">
+        <button className="product-page__back-button" onClick={handleClick}>
+          Go Back
+        </button>
+      </div>
       <ProductCTA product={selectedProduct} />
 
       {/* === Product Features === */}
