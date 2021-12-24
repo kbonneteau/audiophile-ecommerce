@@ -1,0 +1,39 @@
+@use "../../partials/typography" as *;
+@use "../../partials/mixins" as *;
+@use "../../partials/variables" as *;
+@use "../../partials/keyframes" as *;
+@use "../../components/ProductCard/ProductCard.scss";
+
+.product-cta {
+  padding: 0.5rem 1.5rem;
+  @include flex-centered-column;
+  gap: 2rem;
+
+  &__image {
+    width: 100%;
+    border-radius: 0.5rem;
+  }
+
+  &__details-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  &__new-product {
+    @extend .product-card__new-product;
+  }
+
+  &__name {
+    font-size: 1.75rem;
+    font-weight: 600;
+    line-height: 40px;
+  }
+
+  &__description {
+    margin: 0;
+    color: $alt-text;
+    line-height: 1.6rem;
+    width: 35ch;
+  }
+}

@@ -1,7 +1,0 @@
-@use '../../components/ProductCard/ProductCard.scss';
-
-.add-to-cart {
-    &__new-product {
-        @extend .product-card__new-product;
-    }
-}

@@ -1,0 +1,21 @@
+@use "../../partials/typography" as *;
+@use "../../partials/mixins" as *;
+@use "../../partials/variables" as *;
+@use "../../partials/keyframes" as *;
+
+.product-page {
+  &__back-button {
+    border: none;
+    background: none;
+    color: $alt-text;
+    font-size: 1rem;
+    line-height: 1.6rem;
+    margin-left: 1.5rem;
+    padding: 1rem 0;
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
