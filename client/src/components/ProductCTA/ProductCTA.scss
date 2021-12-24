@@ -36,4 +36,13 @@
     line-height: 1.6rem;
     width: 35ch;
   }
+
+  &__price {
+    // border: none;
+    // outline: none;
+    font-family: $site-font, sans-serif;
+    letter-spacing: 1.29px;
+    font-size: 1.125rem;
+    font-weight: 600;
+  }
 }

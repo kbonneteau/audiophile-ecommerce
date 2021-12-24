@@ -1,0 +1,32 @@
+@use "../../partials/typography" as *;
+@use "../../partials/mixins" as *;
+@use "../../partials/variables" as *;
+@use "../../partials/keyframes" as *;
+
+.quantity-selector {
+  @include flex-centering;
+  justify-content: space-evenly;
+  background-color: $product-card-bg;
+  height: 3rem;
+  width: 7.5rem;
+
+  &__quantity {
+    @include button-input-reset;
+    text-align: center;
+    font-weight: 700;
+  }
+
+  &__decrement,
+  &__increment {
+    @include button-input-reset;
+    cursor: pointer;
+    font-weight: 700;
+    color: $alt-text;
+    padding: 0 1rem;
+    height: 100%;
+
+    &:hover {
+      color: $dark-text;
+    }
+  }
+}

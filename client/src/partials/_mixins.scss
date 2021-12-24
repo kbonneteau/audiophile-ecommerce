@@ -1,103 +1,112 @@
-@use './variables' as *;
+@use "./variables" as *;
 
 // Breakpoints
 @mixin tablet {
-    @media screen and (min-width: $tablet-breakpoint) {
-        @content;
-    }
+  @media screen and (min-width: $tablet-breakpoint) {
+    @content;
+  }
 }
 
 @mixin desktop {
-    @media screen and (min-width: $desktop-breakpoint) {
-        @content;
-    }
+  @media screen and (min-width: $desktop-breakpoint) {
+    @content;
+  }
 }
 
-
 // Font mixins
-@mixin text($font-family, $font-size, $font-weight, $line-height, $letter-spacing) {
-    font-family: $font-family;
-    font-size: $font-size;
-    font-weight: $font-weight ;
-    line-height: $line-height;
-    letter-spacing: $letter-spacing;
+@mixin text(
+  $font-family,
+  $font-size,
+  $font-weight,
+  $line-height,
+  $letter-spacing
+) {
+  font-family: $font-family;
+  font-size: $font-size;
+  font-weight: $font-weight;
+  line-height: $line-height;
+  letter-spacing: $letter-spacing;
 }
 
 @mixin overline-font {
-    @include text($site-font, 0.875rem, normal, 1.1875rem, 10px);
-    text-transform: uppercase;
+  @include text($site-font, 0.875rem, normal, 1.1875rem, 10px);
+  text-transform: uppercase;
 }
 
 @mixin subtitle-text {
-    @include text($site-font, 0.8125rem, bold, 1.5625rem, 1px);
+  @include text($site-font, 0.8125rem, bold, 1.5625rem, 1px);
 }
-
 
 // Layout styles
 @mixin flex-centering {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 @mixin flex-centered-column {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-
 // Button styles
+@mixin button-input-reset {
+  background: none;
+  border: none;
+  font-size: 15px;
+  font-family: $site-font, sans-serif;
+}
+
 @mixin primary-button {
-    @include subtitle-text;
-    color: $light-text;
-    background-color: $primary-accent;
-    padding: calc((3rem - 1.5625rem) / 2) 2rem; // (max container size - line height) / 2
-    text-align: center;
-    text-decoration: none;
-    font-weight: normal;
-    text-transform: uppercase;
-    
-    &:hover {
-        background-color: $secondary-accent;
-    }
+  @include subtitle-text;
+  color: $light-text;
+  background-color: $primary-accent;
+  padding: calc((3rem - 1.5625rem) / 2) 2rem; // (max container size - line height) / 2
+  text-align: center;
+  text-decoration: none;
+  font-weight: normal;
+  text-transform: uppercase;
+
+  &:hover {
+    background-color: $secondary-accent;
+  }
 }
 
 @mixin secondary-button {
-    color: $dark-text;
-    border: 2px solid $dark-text;
-    padding: 1rem 0;
-    width: 10rem;
-    text-align: center;
-    text-decoration: none;
-    font-weight: normal;
-    text-transform: uppercase;
+  color: $dark-text;
+  border: 2px solid $dark-text;
+  padding: 1rem 0;
+  width: 10rem;
+  text-align: center;
+  text-decoration: none;
+  font-weight: normal;
+  text-transform: uppercase;
 
-    &:hover {
-        background-color: $dark-text;
-        color: $light-text;
-    }
+  &:hover {
+    background-color: $dark-text;
+    color: $light-text;
+  }
 }
 
 @mixin shop-button {
-    @include flex-centering;
-    @include subtitle-text;
-    font-weight: normal;
-    text-transform: uppercase;
-    text-decoration: none;
-    color: $dark-text;
-    gap: 0.8125rem;
+  @include flex-centering;
+  @include subtitle-text;
+  font-weight: normal;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: $dark-text;
+  gap: 0.8125rem;
 
-    &:hover {
-        color: $primary-accent;
-    }
+  &:hover {
+    color: $primary-accent;
+  }
 }
-
 
 // Wrapper styles
 @mixin tablet-wrapper {
-    max-width: $max-content-width;
-    flex-grow: 1;
-    margin-left: 2.5rem;
-    margin-right: 2.5rem;
+  max-width: $max-content-width;
+  flex-grow: 1;
+  margin-left: 2.5rem;
+  margin-right: 2.5rem;
 }
