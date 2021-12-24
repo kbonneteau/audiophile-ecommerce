@@ -1,20 +1,34 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import NumberFormat from "react-number-format";
 import "./ProductCTA.scss";
 import ProductQuantityForm from "../ProductQuantityForm/ProductQuantityForm";
 
 const ProductCTA = ({ product }) => {
+  const [screenSize, setScreenSize] = useState(null);
+
   useEffect(() => {
+    // console.log(window.screen);
+    if (window.screen.width > 1023) {
+      console.log("desktop");
+    } else if (window.screen.width > 767) {
+      console.log("tablet");
+    } else {
+      console.log("mobile");
+    }
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [product]);
 
   return (
     <section className="product-cta">
-      <img
-        className="product-cta__image"
-        src={product.image.mobile}
-        alt={product.name}
-      />
+      <picture>
+        <source srcSet={product.image.desktop} media="(min-width: 1024px)" />
+        <source srcSet={product.image.tablet} media="(min-width: 768px)" />
+        <img
+          className="product-cta__image"
+          src={product.image.mobile}
+          alt={product.name}
+        />
+      </picture>
       <div className="product-cta__details-container">
         {product.new && (
           <span className="product-cta__new-product">New product</span>

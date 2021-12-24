@@ -9,9 +9,19 @@
   @include flex-centered-column;
   gap: 2rem;
 
+  @include tablet {
+    flex-direction: row;
+    height: calc(30rem + 1rem);
+  }
+
   &__image {
     width: 100%;
     border-radius: 0.5rem;
+
+    @include tablet {
+      width: auto;
+      height: 100%;
+    }
   }
 
   &__details-container {
