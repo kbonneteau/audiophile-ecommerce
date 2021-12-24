@@ -1,13 +1,13 @@
 import React, { useEffect } from "react";
 import NumberFormat from "react-number-format";
 import "./ProductCTA.scss";
-import QuantitySelector from "../QuantitySelector/QuantitySelector";
+import ProductQuantityForm from "../ProductQuantityForm/ProductQuantityForm";
 
 const ProductCTA = ({ product }) => {
-  console.log("product cta", product);
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
-  }, product);
+  }, [product]);
+
   return (
     <section className="product-cta">
       <img
@@ -28,12 +28,7 @@ const ProductCTA = ({ product }) => {
           displayType={"text"}
           thousandSeparator={true}
         />
-        {/* number input and incrementer/decrementer */}
-        <form onSubmit={(e) => e.preventDefault()}>
-          <QuantitySelector />
-          <button type="submit">Add to cart</button>
-        </form>
-        {/* add to cart button */}
+        <ProductQuantityForm id={product.id} />
       </div>
     </section>
   );

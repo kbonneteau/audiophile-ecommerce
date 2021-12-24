@@ -1,0 +1,15 @@
+@use "../../partials/typography" as *;
+@use "../../partials/mixins" as *;
+@use "../../partials/variables" as *;
+@use "../../partials/keyframes" as *;
+
+.quantity-form {
+  display: flex;
+  gap: 1rem;
+
+  &__add-to-cart {
+    @include button-input-reset;
+    @include primary-button;
+    cursor: pointer;
+  }
+}

@@ -26,6 +26,7 @@ const QuantitySelector = ({ selectedQuantity }) => {
         id="quantity"
         min="1"
         max="99"
+        onChange={() => null}
         value={quantity}
       />
       <button className="quantity-selector__increment" onClick={incrementCount}>
