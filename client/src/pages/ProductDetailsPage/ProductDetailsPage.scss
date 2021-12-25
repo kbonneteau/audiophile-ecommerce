@@ -15,11 +15,13 @@
     width: 100%;
 
     @include tablet {
+      padding: 0 1.5rem;
       margin: 1rem 0 0.5rem 0.5rem;
       max-width: $max-content-width;
     }
 
     @include desktop {
+      padding: 0;
       margin: 3.9375rem 0 2.5rem 0.5rem;
     }
   }
@@ -40,5 +42,8 @@
     &:hover {
       text-decoration: underline;
     }
+  }
+
+  &__features-wrapper {
   }
 }

@@ -52,8 +52,10 @@ const ProductDetailsPage = () => {
         </button>
       </div>
       <ProductCTA product={selectedProduct} />
-      <ProductFeatures features={features} />
-      <ProductInclusions includedItems={selectedProduct.includes} />
+      <div className="product-page__features-wrapper">
+        <ProductFeatures features={features} />
+        <ProductInclusions includedItems={selectedProduct.includes} />
+      </div>
 
       {/* === Product images === */}
 

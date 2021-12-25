@@ -2,3 +2,29 @@
 @use "../../partials/mixins" as *;
 @use "../../partials/variables" as *;
 @use "../../partials/keyframes" as *;
+
+.product-features {
+  margin: 5rem 0;
+  padding: 0.5rem 1.5rem;
+  @include flex-centered-column;
+  width: 100%;
+
+  @include tablet {
+    padding: 0.5rem 2.5rem;
+  }
+
+  &__title {
+    font-size: 1.5rem;
+    width: 100%;
+    margin-bottom: 1rem;
+
+    @include tablet {
+      font-size: 2rem;
+    }
+  }
+
+  &__details {
+    color: $alt-text;
+    line-height: 1.6rem;
+  }
+}
