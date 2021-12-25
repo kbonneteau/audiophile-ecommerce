@@ -4,10 +4,13 @@ import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { API_BASE_URL, API_PRODUCTS } from "../../utils/apiUtils";
 import ProductCTA from "../../components/ProductCTA/ProductCTA";
+import ProductFeatures from "../../components/ProductFeatures/ProductFeatures";
+import ProductInclusions from "../../components/ProductInclusions/ProductInclusions";
 import SecondaryFooter from "../../components/SecondaryFooter/SecondaryFooter";
 
 const ProductDetailsPage = () => {
   const [selectedProduct, setSelectedProduct] = useState(null);
+  const [features, setFeatures] = useState([]);
   const { categoryName, productId } = useParams();
   const navigate = useNavigate();
 
@@ -36,6 +39,9 @@ const ProductDetailsPage = () => {
   useEffect(() => {
     // If no selected product, fetch product details
     !selectedProduct && fetchProductDetails(productId);
+
+    // Split the features text at the new line break
+    selectedProduct && setFeatures(selectedProduct.features.split("\n"));
   }, [selectedProduct, productId]);
 
   return !selectedProduct ? null : (
@@ -46,12 +52,13 @@ const ProductDetailsPage = () => {
         </button>
       </div>
       <ProductCTA product={selectedProduct} />
+      <ProductFeatures features={features} />
+      <ProductInclusions includedItems={selectedProduct.includes} />
 
-      {/* === Product Features === */}
-
-      {/* === Product In The Box === */}
+      {/* === Product images === */}
 
       {/* === Product Suggestions === */}
+
       <SecondaryFooter />
     </main>
   );
