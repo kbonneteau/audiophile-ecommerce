@@ -7,6 +7,7 @@ import ProductCTA from "../../components/ProductCTA/ProductCTA";
 import ProductFeatures from "../../components/ProductFeatures/ProductFeatures";
 import ProductInclusions from "../../components/ProductInclusions/ProductInclusions";
 import SecondaryFooter from "../../components/SecondaryFooter/SecondaryFooter";
+import Wrapper from "../../components/Wrapper/Wrapper";
 
 const ProductDetailsPage = () => {
   const [selectedProduct, setSelectedProduct] = useState(null);
@@ -46,21 +47,22 @@ const ProductDetailsPage = () => {
 
   return !selectedProduct ? null : (
     <main className="product-page">
-      <div className="product-page__wrapper">
-        <button className="product-page__back-button" onClick={handleClick}>
-          Go Back
-        </button>
-      </div>
-      <ProductCTA product={selectedProduct} />
-      <div className="product-page__features-wrapper">
-        <ProductFeatures features={features} />
-        <ProductInclusions includedItems={selectedProduct.includes} />
-      </div>
+      <Wrapper>
+        <div className="product-page__wrapper">
+          <button className="product-page__back-button" onClick={handleClick}>
+            Go Back
+          </button>
+        </div>
+        <ProductCTA product={selectedProduct} />
+        <div className="product-page__features-wrapper">
+          <ProductFeatures features={features} />
+          <ProductInclusions includedItems={selectedProduct.includes} />
+        </div>
 
-      {/* === Product images === */}
+        {/* === Product images === */}
 
-      {/* === Product Suggestions === */}
-
+        {/* === Product Suggestions === */}
+      </Wrapper>
       <SecondaryFooter />
     </main>
   );

@@ -5,13 +5,13 @@
 @use "../../components/ProductCard/ProductCard.scss";
 
 .product-cta {
-  padding: 0.5rem 1.5rem;
+  padding: 0.5rem 0;
   @include flex-centered-column;
   gap: 2rem;
   width: 100%;
 
   @include tablet {
-    padding: 0.5rem 2.5rem;
+    padding: 0.5rem 0;
     flex-direction: row;
     gap: 4.3125rem;
     max-width: $max-content-width;

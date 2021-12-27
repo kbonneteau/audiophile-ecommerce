@@ -1,0 +1,28 @@
+@use "../../partials/typography" as *;
+@use "../../partials/mixins" as *;
+@use "../../partials/variables" as *;
+@use "../../partials/keyframes" as *;
+
+.wrapper {
+  width: 100%;
+  padding: 0 1.5rem;
+  @include flex-centered-column;
+
+  @include tablet {
+    margin: 0 auto; // center the column
+    padding: 0 2.5rem;
+    max-width: $max-content-width;
+  }
+
+  @include desktop {
+    padding: 0;
+  }
+}
+
+// .wrapper {
+//   @include flex-centered-column;
+
+//   @include desktop {
+//     padding: 0 2.5rem;
+//   }
+// }

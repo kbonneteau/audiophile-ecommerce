@@ -4,25 +4,26 @@
 @use "../../partials/keyframes" as *;
 
 .product-page {
-  @include flex-centered-column;
+  // @include flex-centered-column;
 
   @include desktop {
-    padding: 0 2.5rem;
+    // padding: 0 2.5rem;
   }
 
   &__wrapper {
-    margin-left: 0.5rem;
+    //button wrapper
+    // margin-left: 0.5rem;
     width: 100%;
 
     @include tablet {
-      padding: 0 1.5rem;
-      margin: 1rem 0 0.5rem 0.5rem;
-      max-width: $max-content-width;
+      // padding: 0 1.5rem;
+      // margin: 1rem 0 0.5rem 0.5rem;
+      // max-width: $max-content-width;
     }
 
     @include desktop {
-      padding: 0;
-      margin: 3.9375rem 0 2.5rem 0.5rem;
+      // padding: 0;
+      // margin: 3.9375rem 0 2.5rem 0.5rem;
     }
   }
 
