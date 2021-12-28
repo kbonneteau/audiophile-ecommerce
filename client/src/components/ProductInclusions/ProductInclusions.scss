@@ -16,6 +16,12 @@
     // justify-content: space-between;
   }
 
+  @include desktop {
+    flex-direction: column;
+    width: auto;
+    flex-grow: 1;
+  }
+
   &__title {
     width: 100%;
     font-size: 1.5rem;
@@ -23,6 +29,10 @@
     @include tablet {
       width: 50%;
       font-size: 2rem;
+    }
+
+    @include desktop {
+      width: auto;
     }
   }
 

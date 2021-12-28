@@ -13,6 +13,13 @@
     padding: 0.5rem 0;
   }
 
+  @include desktop {
+    width: auto;
+    margin: 0;
+    padding: 0;
+    align-items: flex-start;
+  }
+
   &__title {
     font-size: 1.5rem;
     width: 100%;
@@ -26,5 +33,9 @@
   &__details {
     color: $alt-text;
     line-height: 1.6rem;
+
+    @include desktop {
+      max-width: 69ch;
+    }
   }
 }

@@ -46,5 +46,11 @@
   }
 
   &__features-wrapper {
+    @include desktop {
+      width: 100%;
+      display: flex;
+      margin: 10rem 0;
+      gap: 8rem;
+    }
   }
 }
