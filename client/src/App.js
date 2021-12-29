@@ -6,17 +6,20 @@ import HomePage from './pages/HomePage/HomePage';
 import ProductCategoryPage from './pages/ProductCategoryPage/ProductCategoryPage';
 import ProductDetailsPage from './pages/ProductDetailsPage/ProductDetailsPage';
 import { ProductsProvider } from './contexts/ProductsContext';
+import { CategoryProvider } from './contexts/CategoryContext';
 
 function App() {
   return (
     <BrowserRouter>
       <Header />
       <ProductsProvider>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/:categoryName" element={<ProductCategoryPage />} />
-          <Route path="/:categoryName/:productId" element={<ProductDetailsPage />} />
-        </Routes>
+        <CategoryProvider>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/:categoryName" element={<ProductCategoryPage />} />
+            <Route path="/:categoryName/:productId" element={<ProductDetailsPage />} />
+          </Routes>
+        </CategoryProvider>
       </ProductsProvider>
       <Footer />
     </BrowserRouter>
