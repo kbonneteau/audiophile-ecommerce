@@ -7,6 +7,7 @@ import ProductCTA from "../../components/ProductCTA/ProductCTA";
 import ProductFeatures from "../../components/ProductFeatures/ProductFeatures";
 import ProductInclusions from "../../components/ProductInclusions/ProductInclusions";
 import ProductImages from "../../components/ProductImages/ProductImages";
+import ProductSuggestions from "../../components/ProductSuggestions/ProductSuggestions";
 import SecondaryFooter from "../../components/SecondaryFooter/SecondaryFooter";
 import Wrapper from "../../components/Wrapper/Wrapper";
 
@@ -59,14 +60,13 @@ const ProductDetailsPage = () => {
           <ProductFeatures features={features} />
           <ProductInclusions includedItems={selectedProduct.includes} />
         </div>
-
-        {/* === Product images === */}
         <ProductImages
           galleryImages={Object.values(selectedProduct.gallery)}
           productName={selectedProduct.name}
         />
 
         {/* === Product Suggestions === */}
+        <ProductSuggestions />
       </Wrapper>
       <SecondaryFooter />
     </main>
