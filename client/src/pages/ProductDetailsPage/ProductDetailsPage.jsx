@@ -6,6 +6,7 @@ import { API_BASE_URL, API_PRODUCTS } from "../../utils/apiUtils";
 import ProductCTA from "../../components/ProductCTA/ProductCTA";
 import ProductFeatures from "../../components/ProductFeatures/ProductFeatures";
 import ProductInclusions from "../../components/ProductInclusions/ProductInclusions";
+import ProductImages from "../../components/ProductImages/ProductImages";
 import SecondaryFooter from "../../components/SecondaryFooter/SecondaryFooter";
 import Wrapper from "../../components/Wrapper/Wrapper";
 
@@ -60,6 +61,10 @@ const ProductDetailsPage = () => {
         </div>
 
         {/* === Product images === */}
+        <ProductImages
+          galleryImages={Object.values(selectedProduct.gallery)}
+          productName={selectedProduct.name}
+        />
 
         {/* === Product Suggestions === */}
       </Wrapper>

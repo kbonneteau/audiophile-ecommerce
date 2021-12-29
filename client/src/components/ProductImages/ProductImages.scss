@@ -1,0 +1,61 @@
+@use "../../partials/typography" as *;
+@use "../../partials/mixins" as *;
+@use "../../partials/variables" as *;
+@use "../../partials/keyframes" as *;
+
+.product-images {
+  @include flex-centered-column;
+  gap: 1rem;
+  margin-top: 5rem;
+  width: 100%;
+
+  @include tablet {
+    height: 23rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  @include desktop {
+    justify-content: space-between;
+    align-content: space-between;
+    height: 37rem;
+    margin-top: 0;
+  }
+
+  picture {
+    @include tablet {
+      height: 10.875rem;
+      margin-left: auto;
+    }
+
+    @include desktop {
+      height: 17.5rem;
+    }
+
+    &:last-child {
+      @include tablet {
+        margin-left: unset;
+        margin-right: auto;
+        height: 100%;
+      }
+
+      @include desktop {
+        padding-right: 13px;
+      }
+    }
+  }
+
+  &__image {
+    margin-right: -13px; // handle white space around images
+    width: 100%;
+    border-radius: 0.5rem;
+
+    @include tablet {
+      height: 100%;
+    }
+
+    @include desktop {
+      width: calc(100% + 13px);
+    }
+  }
+}
