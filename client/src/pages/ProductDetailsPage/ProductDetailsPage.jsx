@@ -66,8 +66,6 @@ const ProductDetailsPage = () => {
           galleryImages={Object.values(selectedProduct.gallery)}
           productName={selectedProduct.name}
         />
-
-        {/* === Product Suggestions === */}
         <ProductSuggestions relatedProducts={selectedProduct.others} />
       </Wrapper>
       <SecondaryFooter />
