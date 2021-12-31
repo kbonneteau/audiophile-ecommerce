@@ -4,6 +4,58 @@
 @use "../../partials/keyframes" as *;
 
 .product-suggestions {
+  margin: 7.5rem 0 5rem 0;
+  @include flex-centered-column;
+  gap: 3.5rem;
+
+  @include tablet {
+    flex-flow: row wrap;
+    gap: 0.6875rem;
+  }
+
   &__title {
+    font-size: 1.5rem;
+    line-height: 2.25rem;
+    margin-bottom: -1rem;
+
+    @include tablet {
+      flex-basis: 100%;
+      margin-bottom: 2.8125rem;
+      font-size: 2rem;
+      text-align: center;
+    }
+  }
+
+  &__suggestion-card {
+    @include flex-centered-column;
+    gap: 2rem;
+
+    @include tablet {
+      flex-basis: calc(33.33333% - 0.5rem);
+    }
+  }
+
+  &__product-image {
+    width: 100%;
+    object-fit: cover;
+    border-radius: 0.5rem;
+
+    @include tablet {
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  &__product-name {
+    @extend .product-suggestions__title;
+    margin-bottom: 0;
+    height: 100%;
+
+    @include tablet {
+      font-size: 1.5rem;
+    }
+  }
+
+  &__product-link {
+    @include primary-button;
   }
 }

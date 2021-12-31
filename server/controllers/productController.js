@@ -20,7 +20,7 @@ let productController = {
     getSingleProduct: async (req, res) => {
         try {
             const products = await productModel.readAllProducts();
-            const foundProduct = products.find(product => product.id === Number(req.params.productId));
+            const foundProduct = products.find(product => product.slug === req.params.productSlug);
             foundProduct
                 ? res.status(200).json(foundProduct)
                 : res.status(404).json({ error: "Product not found"});

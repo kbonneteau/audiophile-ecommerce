@@ -14,7 +14,7 @@ import Wrapper from "../../components/Wrapper/Wrapper";
 const ProductDetailsPage = () => {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [features, setFeatures] = useState([]);
-  const { categoryName, productId } = useParams();
+  const { categoryName, productSlug } = useParams();
   const navigate = useNavigate();
 
   const handleClick = (e) => {
@@ -24,13 +24,13 @@ const ProductDetailsPage = () => {
 
   /**
    * Make server request to get the product details related to a specific id. Set the product in state.
-   * @param {string} productId of the selected product
+   * @param {string} productSlug of the selected product
    * @returns {undefined}
    */
-  const fetchProductDetails = async (productId) => {
+  const fetchProductDetails = async (productSlug) => {
     try {
       const { data } = await axios.get(
-        `${API_BASE_URL}${API_PRODUCTS}/${productId}`
+        `${API_BASE_URL}${API_PRODUCTS}/${productSlug}`
       );
       setSelectedProduct(data);
       console.log("returned product", data);
@@ -41,11 +41,11 @@ const ProductDetailsPage = () => {
 
   useEffect(() => {
     // If no selected product, fetch product details
-    !selectedProduct && fetchProductDetails(productId);
+    !selectedProduct && fetchProductDetails(productSlug);
 
     // Split the features text at the new line break
     selectedProduct && setFeatures(selectedProduct.features.split("\n"));
-  }, [selectedProduct, productId]);
+  }, [selectedProduct, productSlug]);
 
   return !selectedProduct ? null : (
     <main className="product-page">
@@ -66,7 +66,7 @@ const ProductDetailsPage = () => {
         />
 
         {/* === Product Suggestions === */}
-        <ProductSuggestions />
+        <ProductSuggestions relatedProducts={selectedProduct.others} />
       </Wrapper>
       <SecondaryFooter />
     </main>
