@@ -13,6 +13,11 @@
     gap: 0.6875rem;
   }
 
+  @include desktop {
+    margin: 7.5rem 0 7.5rem 0;
+    gap: 1.875rem;
+  }
+
   &__title {
     font-size: 1.5rem;
     line-height: 2.25rem;
@@ -24,6 +29,10 @@
       font-size: 2rem;
       text-align: center;
     }
+
+    @include desktop {
+      margin-bottom: 2.125rem;
+    }
   }
 
   &__suggestion-card {
@@ -31,7 +40,7 @@
     gap: 2rem;
 
     @include tablet {
-      flex-basis: calc(33.33333% - 0.5rem);
+      flex-basis: calc(33.33333% - 1.25rem);
     }
   }
 
