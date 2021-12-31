@@ -1,5 +1,5 @@
 import "./ProductDetailsPage.scss";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { API_BASE_URL, API_PRODUCTS } from "../../utils/apiUtils";
@@ -13,8 +13,8 @@ import Wrapper from "../../components/Wrapper/Wrapper";
 
 const ProductDetailsPage = () => {
   const [selectedProduct, setSelectedProduct] = useState(null);
-  const [features, setFeatures] = useState([]);
   const { categoryName, productSlug } = useParams();
+  const slugRef = useRef(productSlug);
   const navigate = useNavigate();
 
   const handleClick = (e) => {
@@ -42,9 +42,11 @@ const ProductDetailsPage = () => {
   useEffect(() => {
     // If no selected product, fetch product details
     !selectedProduct && fetchProductDetails(productSlug);
-
-    // Split the features text at the new line break
-    selectedProduct && setFeatures(selectedProduct.features.split("\n"));
+    // Check if the slug updates. If updated, pull new data
+    if (slugRef.current !== productSlug) {
+      slugRef.current = productSlug;
+      fetchProductDetails(slugRef.current);
+    }
   }, [selectedProduct, productSlug]);
 
   return !selectedProduct ? null : (
@@ -57,7 +59,7 @@ const ProductDetailsPage = () => {
         </div>
         <ProductCTA product={selectedProduct} />
         <div className="product-page__features-wrapper">
-          <ProductFeatures features={features} />
+          <ProductFeatures features={selectedProduct.features.split("\n")} />
           <ProductInclusions includedItems={selectedProduct.includes} />
         </div>
         <ProductImages
