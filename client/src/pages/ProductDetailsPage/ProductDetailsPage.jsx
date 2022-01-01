@@ -1,8 +1,9 @@
 import "./ProductDetailsPage.scss";
 import React, { useEffect, useState, useRef } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 import { API_BASE_URL, API_PRODUCTS } from "../../utils/apiUtils";
+import GoBack from "../../components/GoBack/GoBack";
 import ProductCTA from "../../components/ProductCTA/ProductCTA";
 import ProductFeatures from "../../components/ProductFeatures/ProductFeatures";
 import ProductInclusions from "../../components/ProductInclusions/ProductInclusions";
@@ -13,14 +14,8 @@ import Wrapper from "../../components/Wrapper/Wrapper";
 
 const ProductDetailsPage = () => {
   const [selectedProduct, setSelectedProduct] = useState(null);
-  const { categoryName, productSlug } = useParams();
+  const { productSlug } = useParams();
   const slugRef = useRef(productSlug);
-  const navigate = useNavigate();
-
-  const handleClick = (e) => {
-    e.preventDefault();
-    navigate(`/${categoryName}`);
-  };
 
   /**
    * Make server request to get the product details related to a specific id. Set the product in state.
@@ -52,11 +47,7 @@ const ProductDetailsPage = () => {
   return !selectedProduct ? null : (
     <main className="product-page">
       <Wrapper>
-        <div className="product-page__wrapper">
-          <button className="product-page__back-button" onClick={handleClick}>
-            Go Back
-          </button>
-        </div>
+        <GoBack />
         <ProductCTA product={selectedProduct} />
         <div className="product-page__features-wrapper">
           <ProductFeatures features={selectedProduct.features.split("\n")} />
