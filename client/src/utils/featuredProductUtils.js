@@ -1,0 +1,1 @@
+export const HERO_PRODUCT = "xx99-mark-two-headphones";
