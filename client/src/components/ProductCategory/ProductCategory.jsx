@@ -3,7 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import arrowIcon from "../../assets/icons/icon-arrow-right.svg";
 
-const ProductCategory = ({ category }) => {
+const ProductCategory = ({ category, onClose }) => {
   return (
     <article className="product-category">
       <img
@@ -15,6 +15,7 @@ const ProductCategory = ({ category }) => {
       <Link
         to={`/${category.category}`}
         className="product-category__shop-button"
+        onClick={onClose}
       >
         Shop{" "}
         <img src={arrowIcon} alt="" className="product-category__shop-arrow" />

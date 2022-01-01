@@ -1,0 +1,23 @@
+@use "../../partials/typography" as *;
+@use "../../partials/mixins" as *;
+@use "../../partials/variables" as *;
+@use "../../partials/keyframes" as *;
+
+.navigation-modal {
+  position: absolute;
+  background-color: white;
+  top: 5.625rem;
+  left: 0;
+  right: 0;
+  z-index: 3;
+
+  &__overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100vh;
+    background-color: rgb(0, 0, 0, 0.4);
+    z-index: 1;
+  }
+}

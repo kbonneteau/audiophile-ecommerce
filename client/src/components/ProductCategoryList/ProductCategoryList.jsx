@@ -2,7 +2,7 @@ import "./ProductCategoryList.scss";
 import React from "react";
 import ProductCategory from "../ProductCategory/ProductCategory";
 
-const ProductCategoryList = () => {
+const ProductCategoryList = ({ onClose }) => {
   const productCategories = [
     {
       category: "headphones",
@@ -25,7 +25,7 @@ const ProductCategoryList = () => {
     <section className="product-categories">
       <div className="product-categories__wrapper">
         {productCategories.map((category, i) => (
-          <ProductCategory key={i} category={category} />
+          <ProductCategory key={i} category={category} onClose={onClose} />
         ))}
       </div>
     </section>

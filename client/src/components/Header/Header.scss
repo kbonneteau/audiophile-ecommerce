@@ -1,85 +1,92 @@
-@use '../../partials/typography' as *;
-@use '../../partials/mixins' as *;
-@use '../../partials/variables' as *;
-@use '../../partials/keyframes' as *;
+@use "../../partials/typography" as *;
+@use "../../partials/mixins" as *;
+@use "../../partials/variables" as *;
+@use "../../partials/keyframes" as *;
 
 .site-header {
-    background-color: $primary-dark;
-    background-color: $dark-background;
-    color: $light-text;
+  position: relative;
+  background-color: $primary-dark;
+  background-color: $dark-background;
+  color: $light-text;
+  z-index: 2;
+
+  @include tablet {
+    padding: 0 2.5rem;
+    display: flex;
+    justify-content: center;
+  }
+
+  &__wrapper {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 2rem 0;
+    border-bottom: 1px solid #f1f1f12c;
 
     @include tablet {
-        padding: 0 2.5rem;
-        display: flex;
-        justify-content: center;
-    }
-    
-    &__wrapper {
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        padding: 2rem 0;
-        border-bottom: 1px solid #f1f1f12c;
-
-        @include tablet {
-            gap: 2.625rem;
-            max-width: $max-content-width;
-            flex-grow: 1;
-        }
-
-        @include desktop {
-            justify-content: space-between;
-        }
+      gap: 2.625rem;
+      max-width: $max-content-width;
+      flex-grow: 1;
     }
 
-    &__menu-toggle {
-        height: 1rem;
-        cursor: pointer;
+    @include desktop {
+      justify-content: space-between;
+    }
+  }
 
-        @include desktop {
-            display: none;
-        }
+  &__menu-toggle {
+    height: 1rem;
+    cursor: pointer;
+
+    @include desktop {
+      display: none;
+    }
+  }
+
+  &__logo-link {
+    display: flex;
+    align-items: center;
+  }
+
+  &__logo {
+    @include tablet {
+      margin-right: auto;
     }
 
-    &__logo-link {
-        display: flex;
-        align-items: center;
+    @include desktop {
+      margin: unset;
     }
+  }
 
-    &__logo {
+  &__main-navigation {
+    display: none;
 
-        @include tablet {
-            margin-right: auto;
-        }
-
-        @include desktop {
-            margin: unset;
-        }
+    @include desktop {
+      display: initial;
+      display: flex;
+      gap: 2.125rem;
     }
+  }
 
-    &__main-navigation {
-        display: none;
+  &__link {
+    text-decoration: none;
+    color: $light-text;
+    @include text($site-font, 0.9375rem, 600, 1.5625rem, 2px);
+    text-transform: uppercase;
 
-        @include desktop {
-            display: initial;
-            display: flex;
-            gap: 2.125rem;
-        }
+    &:hover {
+      color: $primary-accent;
     }
+  }
 
-    &__link {
-        text-decoration: none;
-        color: $light-text;
-        @include text($site-font, 0.9375rem, 600, 1.5625rem, 2px);
-        text-transform: uppercase;
+  &__cart {
+    height: 1.25rem;
+    cursor: pointer;
+  }
 
-        &:hover {
-            color: $primary-accent;
-        }
-    }
-
-    &__cart {
-        height: 1.25rem;
-        cursor: pointer;
-    }
+  &__navigation-modal {
+    // position: absolute;
+    // height: 100%;
+    border-radius: 0.5rem 0.5rem 0.5rem 0.5rem;
+  }
 }
