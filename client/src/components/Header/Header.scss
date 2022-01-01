@@ -38,6 +38,10 @@
     height: 1rem;
     cursor: pointer;
 
+    &:hover {
+      filter: $icon-hover-filter;
+    }
+
     @include desktop {
       display: none;
     }
@@ -82,11 +86,9 @@
   &__cart {
     height: 1.25rem;
     cursor: pointer;
-  }
 
-  &__navigation-modal {
-    // position: absolute;
-    // height: 100%;
-    border-radius: 0.5rem 0.5rem 0.5rem 0.5rem;
+    &:hover {
+      filter: $icon-hover-filter;
+    }
   }
 }
