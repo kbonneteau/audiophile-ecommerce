@@ -2,3 +2,87 @@
 @use "../../partials/mixins" as *;
 @use "../../partials/variables" as *;
 @use "../../partials/keyframes" as *;
+
+.checkout-form {
+  @include flex-centered-column;
+
+  @include desktop {
+    flex-direction: row;
+  }
+
+  &__wrapper {
+    width: calc(100vw - 3rem);
+    background-color: #fff;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
+  }
+
+  &__title {
+    font-size: 1.75rem;
+    line-height: initial;
+  }
+
+  &__form-section {
+    border: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  &__subtitle {
+    padding: 0;
+    color: $primary-accent;
+    text-transform: uppercase;
+    @include subtitle-text;
+    margin-bottom: 1rem;
+  }
+
+  &__input-label {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    font-weight: bold;
+  }
+
+  &__input {
+    flex-basis: 100%;
+    font-family: $site-font, sans-serif;
+    font-size: 14px;
+    padding: 1.125rem 1.5rem;
+    border: 1px solid #cfcfcf;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    caret-color: $primary-accent;
+
+    &::placeholder {
+      color: #979797;
+    }
+
+    &:focus {
+      outline: none;
+      border-color: $primary-accent;
+    }
+  }
+
+  &__radio-label {
+    border: 1px solid #cfcfcf;
+    border-radius: 0.5rem;
+    font-size: 14px;
+    font-weight: 600;
+
+    &--selected {
+      border-color: $primary-accent;
+    }
+  }
+
+  &__radio-input {
+  }
+
+  &__submit {
+  }
+}

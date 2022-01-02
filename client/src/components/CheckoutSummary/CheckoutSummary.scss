@@ -2,3 +2,8 @@
 @use "../../partials/mixins" as *;
 @use "../../partials/variables" as *;
 @use "../../partials/keyframes" as *;
+@use "../CheckoutForm/CheckoutForm.scss";
+
+.checkout-summary {
+  @extend .checkout-form__wrapper;
+}

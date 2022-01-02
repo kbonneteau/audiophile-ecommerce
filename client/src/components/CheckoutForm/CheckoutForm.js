@@ -11,122 +11,129 @@ const CheckoutForm = () => {
   return (
     <form className="checkout-form" onSubmit={handleSubmit}>
       <div className="checkout-form__wrapper">
+        <h1 className="checkout-form__title">Checkout</h1>
         <fieldset className="checkout-form__form-section">
           <legend className="checkout-form__subtitle">Billing Details</legend>
           <label className="checkout-form__input-label" htmlFor="name">
             Name
+            <input
+              className="checkout-form__input"
+              type="text"
+              name="name"
+              id="name"
+              placeholder="Alexei Ward"
+            />
           </label>
-          <input
-            className="checkout-form__input"
-            type="text"
-            name="name"
-            id="name"
-            placeholder="Alexei Ward"
-          />
           <label className="checkout-form__input-label" htmlFor="email">
             Email Address
+            <input
+              className="checkout-form__input"
+              type="text"
+              name="email"
+              id="email"
+              placeholder="alexei@mail.com"
+            />
           </label>
-          <input
-            className="checkout-form__input"
-            type="text"
-            name="email"
-            id="email"
-            placeholder="alexei@mail.com"
-          />
           <label className="checkout-form__input-label" htmlFor="phone">
             Phone Number
+            <input
+              className="checkout-form__input"
+              type="text"
+              name="phone"
+              id="phone"
+              placeholder="+1 202-555-0136"
+            />
           </label>
-          <input
-            className="checkout-form__input"
-            type="text"
-            name="phone"
-            id="phone"
-            placeholder="+1 202-555-0136"
-          />
         </fieldset>
         <fieldset className="checkout-form__form-section">
           <legend className="checkout-form__subtitle">Shipping info</legend>
           <label className="checkout-form__input-label" htmlFor="address1">
             Street Address
+            <input
+              className="checkout-form__input"
+              type="text"
+              name="address1"
+              id="address1"
+              placeholder="1137 Williams Avenue"
+            />
           </label>
-          <input
-            className="checkout-form__input"
-            type="text"
-            name="address1"
-            id="address1"
-            placeholder="1337 Williams Avenue"
-          />
           <label className="checkout-form__input-label" htmlFor="postcode">
             ZIP Code
+            <input
+              className="checkout-form__input"
+              type="text"
+              name="postcode"
+              id="postcode"
+              placeholder="10001"
+            />
           </label>
-          <input
-            className="checkout-form__input"
-            type="text"
-            name="postcode"
-            id="postcode"
-            placeholder="10001"
-          />
           <label className="checkout-form__input-label" htmlFor="city">
             City
+            <input
+              className="checkout-form__input"
+              type="text"
+              name="city"
+              id="city"
+              placeholder="New York"
+            />
           </label>
-          <input
-            className="checkout-form__input"
-            type="text"
-            name="city"
-            id="city"
-            placeholder="New York"
-          />
           <label className="checkout-form__input-label" htmlFor="country">
             Country
+            <input
+              className="checkout-form__input"
+              type="text"
+              name="country"
+              id="country"
+              placeholder="United States"
+            />
           </label>
-          <input
-            className="checkout-form__input"
-            type="text"
-            name="country"
-            id="country"
-            placeholder="United States"
-          />
         </fieldset>
         <fieldset className="checkout-form__form-section">
           <legend className="checkout-form__subtitle">Payment details</legend>
-          <p>Payment Method</p>
-          <input
-            type="radio"
-            name="method"
-            id="emoney"
-            value="emoney"
-            checked
-          />
-          <label className="checkout-form__input-label" htmlFor="emoney">
+          <p className="checkout-form__input-label">Payment Method</p>
+          <label className="checkout-form__radio-label" htmlFor="emoney">
+            <input
+              className="checkout-form__radio-input"
+              type="radio"
+              name="method"
+              id="emoney"
+              value="emoney"
+              checked
+            />
             e-Money
           </label>
-          <input type="radio" name="method" id="cash" value="cash" />
-          <label className="checkout-form__input-label" htmlFor="cash">
+          <label className="checkout-form__radio-label" htmlFor="cash">
+            <input
+              className="checkout-form__radio-input"
+              type="radio"
+              name="method"
+              id="cash"
+              value="cash"
+            />
             Cash on Delivery
           </label>
+          {/* When selected, show this */}
           <label className="checkout-form__input-label" htmlFor="enumber">
             e-Money Number
+            <input
+              className="checkout-form__input"
+              type="text"
+              name="enumber"
+              id="enumber"
+              placeholder="238521993"
+            />
           </label>
-          <input
-            className="checkout-form__input"
-            type="text"
-            name="enumber"
-            id="enumber"
-            placeholder="238521993"
-          />
           <label className="checkout-form__input-label" htmlFor="epin">
             e-Money PIN
+            <input
+              className="checkout-form__input"
+              type="password"
+              name="epin"
+              id="epin"
+              placeholder="6891"
+            />
           </label>
-          <input
-            className="checkout-form__input"
-            type="password"
-            name="epin"
-            id="epin"
-            placeholder="6891"
-          />
-          {/* radio */}
-          {/* When selected, show this */}
-          {/* else, show this */}
+          {/* else, show nothing */}
         </fieldset>
       </div>
       <CheckoutSummary />

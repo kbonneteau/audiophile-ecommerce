@@ -3,8 +3,8 @@ import React from "react";
 
 const CheckoutSummary = () => {
   return (
-    <article className="order-summary">
-      <h2 className="order-summary__title">Summary</h2>
+    <article className="checkout-summary">
+      <h2 className="checkout-summary__title">Summary</h2>
       {/* map through items */}
       <div>
         <p>this is an item</p>
@@ -15,7 +15,9 @@ const CheckoutSummary = () => {
       <p>Shipping: $50</p>
       <p>VAT (included): $1,079</p>
       <p>Grand total: $5,446</p>
-      <button type="submit">Continue & Pay</button>
+      <button className="checkout-form__submit" type="submit">
+        Continue & Pay
+      </button>
     </article>
   );
 };

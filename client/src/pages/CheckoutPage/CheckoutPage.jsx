@@ -9,7 +9,6 @@ const CheckoutPage = () => {
     <main className="checkout-page">
       <Wrapper>
         <GoBack />
-        <h1 className="checkout-page__title">Checkout</h1>
         <CheckoutForm />
       </Wrapper>
     </main>
