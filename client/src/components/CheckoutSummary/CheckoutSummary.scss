@@ -2,7 +2,3 @@
 @use "../../partials/mixins" as *;
 @use "../../partials/variables" as *;
 @use "../../partials/keyframes" as *;
-
-.checkout-page {
-  min-height: calc(100vh - 27.875rem); // desktop
-}

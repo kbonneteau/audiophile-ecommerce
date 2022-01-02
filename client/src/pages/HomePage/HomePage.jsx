@@ -5,6 +5,8 @@ import ProductCategoryList from "../../components/ProductCategoryList/ProductCat
 import FeaturedProducts from "../../components/FeaturedProducts/FeaturedProducts";
 import MissionStatement from "../../components/MissionStatement/MissionStatement";
 
+import { Link } from "react-router-dom";
+
 const HomePage = () => {
   useEffect(() => {
     document.title = `Audiophile`;
@@ -13,6 +15,7 @@ const HomePage = () => {
 
   return (
     <main>
+      <Link to="/checkout">Test Checkout</Link>
       <Hero />
       <ProductCategoryList />
       <FeaturedProducts />
