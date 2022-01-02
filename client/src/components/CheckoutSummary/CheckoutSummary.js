@@ -6,15 +6,29 @@ const CheckoutSummary = () => {
     <article className="checkout-summary">
       <h2 className="checkout-summary__title">Summary</h2>
       {/* map through items */}
-      <div>
-        <p>this is an item</p>
-        <p>this is an item</p>
-        <p>this is an item</p>
+      <div className="checkout-summary__item-container">
+        <img className="checkout-summary__icon" src="" alt="icon" />
+        <div className="checkout-summary__item-details">
+          <h3 className="checkout-summary__product-name">product</h3>
+          <p className="checkout-summary__product-price">price</p>
+        </div>
+        <p className="checkout-summary__quantity">x1</p>
       </div>
-      <p>Total: $5,396</p>
-      <p>Shipping: $50</p>
-      <p>VAT (included): $1,079</p>
-      <p>Grand total: $5,446</p>
+      <div className="checkout-summary__cost-roundup">
+        <p className="checkout-summary__total">
+          Total: <span className="checkout-summary__cost">$5,396</span>
+        </p>
+        <p className="checkout-summary__total">
+          Shipping: <span className="checkout-summary__cost">$50</span>
+        </p>
+        <p className="checkout-summary__total">
+          VAT (included): <span className="checkout-summary__cost">$1,079</span>
+        </p>
+        <p className="checkout-summary__grand-total">
+          Grand total:
+          <span className="checkout-summary__total-cost">$5,446</span>
+        </p>
+      </div>
       <button className="checkout-form__submit" type="submit">
         Continue & Pay
       </button>
