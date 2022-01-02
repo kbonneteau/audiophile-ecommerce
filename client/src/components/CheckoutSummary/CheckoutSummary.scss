@@ -5,5 +5,9 @@
 @use "../CheckoutForm/CheckoutForm.scss";
 
 .checkout-summary {
-  @extend .checkout-form__wrapper;
+  width: 100%;
+  background-color: #fff;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
 }

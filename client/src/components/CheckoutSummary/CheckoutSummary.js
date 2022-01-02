@@ -1,4 +1,4 @@
-import "./CheckoutSummary";
+import "./CheckoutSummary.scss";
 import React from "react";
 
 const CheckoutSummary = () => {

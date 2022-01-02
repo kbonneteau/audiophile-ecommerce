@@ -47,7 +47,10 @@ const CheckoutForm = () => {
         </fieldset>
         <fieldset className="checkout-form__form-section">
           <legend className="checkout-form__subtitle">Shipping info</legend>
-          <label className="checkout-form__input-label" htmlFor="address1">
+          <label
+            className="checkout-form__input-label checkout-form__input-label--long"
+            htmlFor="address1"
+          >
             Street Address
             <input
               className="checkout-form__input"
@@ -88,30 +91,32 @@ const CheckoutForm = () => {
             />
           </label>
         </fieldset>
-        <fieldset className="checkout-form__form-section">
+        <fieldset className="checkout-form__form-section checkout-form__form-section--payment">
           <legend className="checkout-form__subtitle">Payment details</legend>
           <p className="checkout-form__input-label">Payment Method</p>
-          <label className="checkout-form__radio-label" htmlFor="emoney">
-            <input
-              className="checkout-form__radio-input"
-              type="radio"
-              name="method"
-              id="emoney"
-              value="emoney"
-              checked
-            />
-            e-Money
-          </label>
-          <label className="checkout-form__radio-label" htmlFor="cash">
-            <input
-              className="checkout-form__radio-input"
-              type="radio"
-              name="method"
-              id="cash"
-              value="cash"
-            />
-            Cash on Delivery
-          </label>
+          <div className="checkout-form__radio-container">
+            <label className="checkout-form__radio-label" htmlFor="emoney">
+              <input
+                className="checkout-form__radio-input"
+                type="radio"
+                name="method"
+                id="emoney"
+                value="emoney"
+                checked
+              />
+              e-Money
+            </label>
+            <label className="checkout-form__radio-label" htmlFor="cash">
+              <input
+                className="checkout-form__radio-input"
+                type="radio"
+                name="method"
+                id="cash"
+                value="cash"
+              />
+              Cash on Delivery
+            </label>
+          </div>
           {/* When selected, show this */}
           <label className="checkout-form__input-label" htmlFor="enumber">
             e-Money Number
