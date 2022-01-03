@@ -70,6 +70,7 @@
     gap: 0.5rem;
     font-size: 0.75rem;
     font-weight: bold;
+    justify-content: space-between;
 
     @include tablet {
       flex-basis: calc(50% - 0.75rem);
@@ -79,6 +80,11 @@
       @include tablet {
         flex-basis: 100%;
       }
+    }
+
+    &--error {
+      @extend .checkout-form__input-label;
+      color: $error;
     }
   }
 
@@ -99,6 +105,15 @@
     &:focus {
       outline: none;
       border-color: $primary-accent;
+    }
+
+    &--error {
+      @extend .checkout-form__input;
+      border: 2px solid $error;
+
+      &:focus {
+        border-color: $error;
+      }
     }
   }
 
@@ -164,4 +179,9 @@
     border: none;
     @include primary-button;
   }
+}
+
+.error-message {
+  font-weight: 500;
+  color: $error;
 }

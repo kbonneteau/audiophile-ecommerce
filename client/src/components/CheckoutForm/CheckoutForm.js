@@ -1,11 +1,67 @@
 import "./CheckoutForm.scss";
-import React from "react";
+import React, { useState, useReducer } from "react";
 import CheckoutSummary from "../CheckoutSummary/CheckoutSummary";
+// import validator from "validator";
+// import { selectValidator } from "../../utils/validationUtils";
+
+const ACTIONS = {
+  UPDATE_VALUE: "update input value",
+};
+
+const initialState = {
+  name: "",
+  email: "",
+  phone: "",
+  address: "",
+  postcode: "",
+  city: "",
+  country: "",
+  method: "",
+  enumber: "",
+  epin: "",
+};
+
+const reducer = (state, action) => {
+  switch (action.type) {
+    case ACTIONS.UPDATE_VALUE:
+      return {
+        ...state,
+        [action.payload.field]: action.payload.value,
+      };
+    default:
+      return state;
+  }
+};
 
 const CheckoutForm = () => {
+  const [state, dispatch] = useReducer(reducer, initialState);
+  // eslint-disable-next-line
+  const [error, setError] = useState(false);
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("submitted!");
+    console.log(state);
+  };
+
+  const handleChange = (e) => {
+    dispatch({
+      type: ACTIONS.UPDATE_VALUE,
+      payload: {
+        field: e.target.name,
+        value: e.target.value,
+      },
+    });
+
+    // const validationTool = selectValidator(inputType);
+    // if (validationTool(e.target.value, "en-CA")) {
+    //   setError(false);
+    // } else {
+    //   if (!error) setError(true);
+    // }
+    // console.log(
+    //   "is this a valid phone number?",
+    //   validationTool(e.target.value, "en-CA")
+    // );
   };
 
   return (
@@ -22,6 +78,8 @@ const CheckoutForm = () => {
               name="name"
               id="name"
               placeholder="Alexei Ward"
+              value={state.name}
+              onChange={handleChange}
             />
           </label>
           <label className="checkout-form__input-label" htmlFor="email">
@@ -32,16 +90,32 @@ const CheckoutForm = () => {
               name="email"
               id="email"
               placeholder="alexei@mail.com"
+              value={state.email}
+              onChange={handleChange}
             />
           </label>
-          <label className="checkout-form__input-label" htmlFor="phone">
+          <label
+            className={
+              error
+                ? "checkout-form__input-label--error"
+                : "checkout-form__input-label"
+            }
+            htmlFor="phone"
+          >
             Phone Number
+            {error && (
+              <span className="error-message">Invalid phone number</span>
+            )}
             <input
-              className="checkout-form__input"
+              className={
+                error ? "checkout-form__input--error" : "checkout-form__input"
+              }
               type="text"
               name="phone"
               id="phone"
               placeholder="+1 202-555-0136"
+              onChange={handleChange}
+              value={state.phone}
             />
           </label>
         </fieldset>
@@ -49,15 +123,17 @@ const CheckoutForm = () => {
           <legend className="checkout-form__subtitle">Shipping info</legend>
           <label
             className="checkout-form__input-label checkout-form__input-label--long"
-            htmlFor="address1"
+            htmlFor="address"
           >
             Street Address
             <input
               className="checkout-form__input"
               type="text"
-              name="address1"
-              id="address1"
+              name="address"
+              id="address"
               placeholder="1137 Williams Avenue"
+              onChange={handleChange}
+              value={state.address}
             />
           </label>
           <label className="checkout-form__input-label" htmlFor="postcode">
@@ -68,6 +144,8 @@ const CheckoutForm = () => {
               name="postcode"
               id="postcode"
               placeholder="10001"
+              onChange={handleChange}
+              value={state.postcode}
             />
           </label>
           <label className="checkout-form__input-label" htmlFor="city">
@@ -78,6 +156,8 @@ const CheckoutForm = () => {
               name="city"
               id="city"
               placeholder="New York"
+              onChange={handleChange}
+              value={state.city}
             />
           </label>
           <label className="checkout-form__input-label" htmlFor="country">
@@ -88,6 +168,8 @@ const CheckoutForm = () => {
               name="country"
               id="country"
               placeholder="United States"
+              onChange={handleChange}
+              value={state.country}
             />
           </label>
         </fieldset>
@@ -102,7 +184,7 @@ const CheckoutForm = () => {
                 name="method"
                 id="emoney"
                 value="emoney"
-                checked
+                onChange={handleChange}
               />
               e-Money
             </label>
@@ -113,6 +195,7 @@ const CheckoutForm = () => {
                 name="method"
                 id="cash"
                 value="cash"
+                onChange={handleChange}
               />
               Cash on Delivery
             </label>
@@ -126,6 +209,8 @@ const CheckoutForm = () => {
               name="enumber"
               id="enumber"
               placeholder="238521993"
+              onChange={handleChange}
+              value={state.enumber}
             />
           </label>
           <label className="checkout-form__input-label" htmlFor="epin">
@@ -136,6 +221,8 @@ const CheckoutForm = () => {
               name="epin"
               id="epin"
               placeholder="6891"
+              onChange={handleChange}
+              value={state.epin}
             />
           </label>
           {/* else, show nothing */}

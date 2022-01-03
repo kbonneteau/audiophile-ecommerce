@@ -32,7 +32,7 @@ const CheckoutSummary = () => {
       <h2 className="checkout-summary__title">Summary</h2>
       {/* map through items */}
       {MOCK_CART.map((cartItem) => (
-        <div className="checkout-summary__item-container">
+        <div key={cartItem.name} className="checkout-summary__item-container">
           <img
             className="checkout-summary__icon"
             src={cartItem.image}
