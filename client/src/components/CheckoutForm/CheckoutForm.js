@@ -3,7 +3,7 @@ import React, { useState, useReducer } from "react";
 import CheckoutSummary from "../CheckoutSummary/CheckoutSummary";
 // import validator from "validator";
 // import { selectValidator } from "../../utils/validationUtils";
-import { validate } from "../../utils/validationUtils";
+import { isInputValid } from "../../utils/validationUtils";
 
 const ACTIONS = {
   UPDATE_VALUE: "update input value",
@@ -42,6 +42,15 @@ const CheckoutForm = () => {
     e.preventDefault();
     console.log("submitted!");
     console.log(state);
+    for (const inputValue in state) {
+      if (inputValue === "phone") {
+        console.log(`${inputValue}: ${state[inputValue]}`);
+        console.log(
+          "is this a valid input?",
+          isInputValid(inputValue, state[inputValue])
+        );
+      }
+    }
   };
 
   const handleChange = (e) => {
