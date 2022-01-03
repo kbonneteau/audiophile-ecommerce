@@ -3,6 +3,7 @@ import React, { useState, useReducer } from "react";
 import CheckoutSummary from "../CheckoutSummary/CheckoutSummary";
 // import validator from "validator";
 // import { selectValidator } from "../../utils/validationUtils";
+import { validate } from "../../utils/validationUtils";
 
 const ACTIONS = {
   UPDATE_VALUE: "update input value",
