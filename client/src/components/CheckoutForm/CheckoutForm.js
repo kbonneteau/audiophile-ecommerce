@@ -43,13 +43,11 @@ const CheckoutForm = () => {
     console.log("submitted!");
     console.log(state);
     for (const inputValue in state) {
-      if (inputValue === "phone") {
-        console.log(`${inputValue}: ${state[inputValue]}`);
-        console.log(
-          "is this a valid input?",
-          isInputValid(inputValue, state[inputValue])
-        );
-      }
+      console.log(`${inputValue}: ${state[inputValue]}`);
+      console.log(
+        "is this a valid input?",
+        isInputValid(inputValue, state[inputValue], state.country)
+      );
     }
   };
 
@@ -211,30 +209,34 @@ const CheckoutForm = () => {
             </label>
           </div>
           {/* When selected, show this */}
-          <label className="checkout-form__input-label" htmlFor="enumber">
-            e-Money Number
-            <input
-              className="checkout-form__input"
-              type="text"
-              name="enumber"
-              id="enumber"
-              placeholder="238521993"
-              onChange={handleChange}
-              value={state.enumber}
-            />
-          </label>
-          <label className="checkout-form__input-label" htmlFor="epin">
-            e-Money PIN
-            <input
-              className="checkout-form__input"
-              type="password"
-              name="epin"
-              id="epin"
-              placeholder="6891"
-              onChange={handleChange}
-              value={state.epin}
-            />
-          </label>
+          {state.method === "emoney" && (
+            <>
+              <label className="checkout-form__input-label" htmlFor="enumber">
+                e-Money Number
+                <input
+                  className="checkout-form__input"
+                  type="text"
+                  name="enumber"
+                  id="enumber"
+                  placeholder="238521993"
+                  onChange={handleChange}
+                  value={state.enumber}
+                />
+              </label>
+              <label className="checkout-form__input-label" htmlFor="epin">
+                e-Money PIN
+                <input
+                  className="checkout-form__input"
+                  type="password"
+                  name="epin"
+                  id="epin"
+                  placeholder="6891"
+                  onChange={handleChange}
+                  value={state.epin}
+                />
+              </label>
+            </>
+          )}
           {/* else, show nothing */}
         </fieldset>
       </div>
