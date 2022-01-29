@@ -9,20 +9,50 @@ const ACTIONS = {
 
 // Should both the value and the error be held in state?
 const initialState = {
-  name: "",
-  email: "",
-  phone: "",
-  address: "",
-  postcode: "",
-  city: "",
-  country: "",
-  method: "",
-  enumber: "",
-  epin: "",
+  name: {
+    value: "",
+    error: false,
+  },
+  email: {
+    value: "",
+    error: false,
+  },
+  phone: {
+    value: "",
+    error: false,
+  },
+  address: {
+    value: "",
+    error: false,
+  },
+  postcode: {
+    value: "",
+    error: false,
+  },
+  city: {
+    value: "",
+    error: false,
+  },
+  country: {
+    value: "",
+    error: false,
+  },
+  method: {
+    value: "",
+    error: false,
+  },
+  enumber: {
+    value: "",
+    error: false,
+  },
+  epin: {
+    value: "",
+    error: false,
+  },
 };
 
 // CURRENT TASKS:
-// TODO: update reducer to handle value change with updated state schema
+// ✅ TODO: update reducer to handle value change with updated state schema
 // TODO: add UPDATE_ERROR to actions
 // TODO: add validation logic to handleBlur for validating field and displaying error
 // TODO: add dynamic error fields to each of the form fields
@@ -37,7 +67,10 @@ const reducer = (state, action) => {
     case ACTIONS.UPDATE_VALUE:
       return {
         ...state,
-        [action.payload.field]: action.payload.value,
+        [action.payload.field]: {
+          ...[action.payload.field],
+          value: action.payload.value,
+        },
       };
     default:
       return state;
@@ -53,10 +86,10 @@ const CheckoutForm = () => {
     console.log("submitted!");
     console.log(state);
     for (const inputValue in state) {
-      console.log(`${inputValue}: ${state[inputValue]}`);
+      console.log(`${inputValue}: ${state[inputValue].value}`);
       console.log(
         "is this a valid input?",
-        isInputValid(inputValue, state[inputValue], state.country)
+        isInputValid(inputValue, state[inputValue].value, state.country.value)
       );
     }
   };
@@ -86,6 +119,7 @@ const CheckoutForm = () => {
     console.log("WE BLURRED!");
     console.log(e.target.name);
   };
+  console.log(state);
 
   return (
     <form className="checkout-form" onSubmit={handleSubmit}>
@@ -102,7 +136,7 @@ const CheckoutForm = () => {
               name="name"
               id="name"
               placeholder="Alexei Ward"
-              value={state.name}
+              value={state.name.value}
               onChange={handleChange}
             />
           </label>
@@ -115,7 +149,7 @@ const CheckoutForm = () => {
               name="email"
               id="email"
               placeholder="alexei@mail.com"
-              value={state.email}
+              value={state.email.value}
               onChange={handleChange}
             />
           </label>
@@ -141,7 +175,7 @@ const CheckoutForm = () => {
               id="phone"
               placeholder="+1 202-555-0136"
               onChange={handleChange}
-              value={state.phone}
+              value={state.phone.value}
             />
           </label>
         </fieldset>
@@ -161,7 +195,7 @@ const CheckoutForm = () => {
               placeholder="1137 Williams Avenue"
               onChange={handleChange}
               onBlur={handleBlur}
-              value={state.address}
+              value={state.address.value}
             />
           </label>
 
@@ -174,7 +208,7 @@ const CheckoutForm = () => {
               id="postcode"
               placeholder="10001"
               onChange={handleChange}
-              value={state.postcode}
+              value={state.postcode.value}
             />
           </label>
 
@@ -187,7 +221,7 @@ const CheckoutForm = () => {
               id="city"
               placeholder="New York"
               onChange={handleChange}
-              value={state.city}
+              value={state.city.value}
             />
           </label>
 
@@ -200,7 +234,7 @@ const CheckoutForm = () => {
               id="country"
               placeholder="United States"
               onChange={handleChange}
-              value={state.country}
+              value={state.country.value}
             />
           </label>
         </fieldset>
@@ -235,7 +269,7 @@ const CheckoutForm = () => {
           </div>
 
           {/* When selected, show this */}
-          {state.method === "emoney" && (
+          {state.method.value === "emoney" && (
             <>
               <label className="checkout-form__input-label" htmlFor="enumber">
                 e-Money Number
@@ -246,7 +280,7 @@ const CheckoutForm = () => {
                   id="enumber"
                   placeholder="238521993"
                   onChange={handleChange}
-                  value={state.enumber}
+                  value={state.enumber.value}
                 />
               </label>
 
@@ -259,7 +293,7 @@ const CheckoutForm = () => {
                   id="epin"
                   placeholder="6891"
                   onChange={handleChange}
-                  value={state.epin}
+                  value={state.epin.value}
                 />
               </label>
             </>
