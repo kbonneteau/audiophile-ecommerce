@@ -16,7 +16,7 @@ export const selectValidator = (inputType) => {
     case "city":
       return REGEXP.text.test.bind(REGEXP.text); // bind test function to REGEXP object
     case "country":
-      return REGEXP.country.test.bind(REGEXP.country); // bind test function to REGEXP object
+      return REGEXP.country.test.bind(REGEXP.country);
     case "phone":
       return validator.isMobilePhone;
     case "email":
@@ -51,14 +51,12 @@ const determineLocale = (type, country) => {
  * Tests if a given input is valid.
  * @param {string} type name of the input field
  * @param {string} value value of input
- * @returns {boolean} true if valid, false if not
+ * @returns {boolean} true if valid, false if not valid or empty
  */
 export const isInputValid = (type, value, country) => {
-  // If field is empty, return false
   if (validator.isEmpty(value)) return false;
   const locale = determineLocale(type, country);
   const validationTool = selectValidator(type);
-  if (type === "phone") return validationTool(value, locale);
-  if (type === "postcode") return validationTool(value, locale);
+  if (type === "phone" || type === "postcode") return validationTool(value, locale);
   return validationTool(value);
 };

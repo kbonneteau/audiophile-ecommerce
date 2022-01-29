@@ -1,14 +1,13 @@
 import "./CheckoutForm.scss";
 import React, { useState, useReducer } from "react";
 import CheckoutSummary from "../CheckoutSummary/CheckoutSummary";
-// import validator from "validator";
-// import { selectValidator } from "../../utils/validationUtils";
 import { isInputValid } from "../../utils/validationUtils";
 
 const ACTIONS = {
   UPDATE_VALUE: "update input value",
 };
 
+// Should both the value and the error be held in state?
 const initialState = {
   name: "",
   email: "",
@@ -22,7 +21,18 @@ const initialState = {
   epin: "",
 };
 
+// CURRENT TASKS:
+// TODO: update reducer to handle value change with updated state schema
+// TODO: add UPDATE_ERROR to actions
+// TODO: add validation logic to handleBlur for validating field and displaying error
+// TODO: add dynamic error fields to each of the form fields
+// TODO: add submit logic functionality:
+//        - If any errors, don't submit
+//        - Complete a final check for errors
+//        - depending on payment method, don't check epin and emoney number if cash
 const reducer = (state, action) => {
+  console.log("REDUCER");
+  console.log("state:", state);
   switch (action.type) {
     case ACTIONS.UPDATE_VALUE:
       return {
@@ -72,10 +82,16 @@ const CheckoutForm = () => {
     // );
   };
 
+  const handleBlur = (e) => {
+    console.log("WE BLURRED!");
+    console.log(e.target.name);
+  };
+
   return (
     <form className="checkout-form" onSubmit={handleSubmit}>
       <div className="checkout-form__wrapper">
         <h1 className="checkout-form__title">Checkout</h1>
+
         <fieldset className="checkout-form__form-section">
           <legend className="checkout-form__subtitle">Billing Details</legend>
           <label className="checkout-form__input-label" htmlFor="name">
@@ -90,6 +106,7 @@ const CheckoutForm = () => {
               onChange={handleChange}
             />
           </label>
+
           <label className="checkout-form__input-label" htmlFor="email">
             Email Address
             <input
@@ -102,6 +119,7 @@ const CheckoutForm = () => {
               onChange={handleChange}
             />
           </label>
+
           <label
             className={
               error
@@ -127,6 +145,7 @@ const CheckoutForm = () => {
             />
           </label>
         </fieldset>
+
         <fieldset className="checkout-form__form-section">
           <legend className="checkout-form__subtitle">Shipping info</legend>
           <label
@@ -141,9 +160,11 @@ const CheckoutForm = () => {
               id="address"
               placeholder="1137 Williams Avenue"
               onChange={handleChange}
+              onBlur={handleBlur}
               value={state.address}
             />
           </label>
+
           <label className="checkout-form__input-label" htmlFor="postcode">
             ZIP Code
             <input
@@ -156,6 +177,7 @@ const CheckoutForm = () => {
               value={state.postcode}
             />
           </label>
+
           <label className="checkout-form__input-label" htmlFor="city">
             City
             <input
@@ -168,6 +190,7 @@ const CheckoutForm = () => {
               value={state.city}
             />
           </label>
+
           <label className="checkout-form__input-label" htmlFor="country">
             Country
             <input
@@ -181,6 +204,7 @@ const CheckoutForm = () => {
             />
           </label>
         </fieldset>
+
         <fieldset className="checkout-form__form-section checkout-form__form-section--payment">
           <legend className="checkout-form__subtitle">Payment details</legend>
           <p className="checkout-form__input-label">Payment Method</p>
@@ -196,6 +220,7 @@ const CheckoutForm = () => {
               />
               e-Money
             </label>
+
             <label className="checkout-form__radio-label" htmlFor="cash">
               <input
                 className="checkout-form__radio-input"
@@ -208,6 +233,7 @@ const CheckoutForm = () => {
               Cash on Delivery
             </label>
           </div>
+
           {/* When selected, show this */}
           {state.method === "emoney" && (
             <>
@@ -223,6 +249,7 @@ const CheckoutForm = () => {
                   value={state.enumber}
                 />
               </label>
+
               <label className="checkout-form__input-label" htmlFor="epin">
                 e-Money PIN
                 <input
