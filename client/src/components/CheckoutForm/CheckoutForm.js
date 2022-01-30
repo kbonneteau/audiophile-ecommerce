@@ -56,7 +56,7 @@ const initialState = {
 // ✅ TODO: update reducer to handle value change with updated state schema
 // ✅ TODO: add UPDATE_ERROR to actions
 // ✅ TODO: add validation logic to handleBlur for validating field
-// TODO: add dynamic error fields to each of the form fields
+// ✅ TODO: add dynamic error fields to each of the form fields
 // TODO: add submit logic functionality:
 //        - If any errors, don't submit
 //        - Complete a final check for errors
@@ -89,15 +89,16 @@ const CheckoutForm = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
   // eslint-disable-next-line
   const [error, setError] = useState(false);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("submitted!");
     // console.log(state);
-    for (const inputValue in state) {
-      console.log(`${inputValue}: ${state[inputValue].value}`);
+    for (const formField in state) {
+      console.log(`${formField}: ${state[formField].value}`);
       console.log(
         "is this a valid input?",
-        isInputValid(inputValue, state[inputValue].value, state.country.value)
+        isInputValid(formField, state[formField].value, state.country.value)
       );
     }
   };
@@ -124,11 +125,7 @@ const CheckoutForm = () => {
   };
 
   const handleBlur = (e) => {
-    console.log("WE BLURRED!");
     const { name } = e.target;
-    // const { value } = state[name];
-    // console.log("name:", name);
-    // console.log("value:", value);
 
     // check if the input is valid
     dispatch({
@@ -146,7 +143,6 @@ const CheckoutForm = () => {
     });
   };
 
-  // console.log(state);
   return (
     <form className="checkout-form" onSubmit={handleSubmit}>
       <div className="checkout-form__wrapper">
@@ -154,10 +150,24 @@ const CheckoutForm = () => {
 
         <fieldset className="checkout-form__form-section">
           <legend className="checkout-form__subtitle">Billing Details</legend>
-          <label className="checkout-form__input-label" htmlFor="name">
+          <label
+            className={
+              state.name.error
+                ? "checkout-form__input-label--error"
+                : "checkout-form__input-label"
+            }
+            htmlFor="name"
+          >
             Name
+            {state.name.error && (
+              <span className="error-message">Invalid name</span>
+            )}
             <input
-              className="checkout-form__input"
+              className={
+                state.name.error
+                  ? "checkout-form__input--error"
+                  : "checkout-form__input"
+              }
               type="text"
               name="name"
               id="name"
@@ -168,10 +178,24 @@ const CheckoutForm = () => {
             />
           </label>
 
-          <label className="checkout-form__input-label" htmlFor="email">
+          <label
+            className={
+              state.email.error
+                ? "checkout-form__input-label--error"
+                : "checkout-form__input-label"
+            }
+            htmlFor="email"
+          >
             Email Address
+            {state.email.error && (
+              <span className="error-message">Invalid email address</span>
+            )}
             <input
-              className="checkout-form__input"
+              className={
+                state.email.error
+                  ? "checkout-form__input--error"
+                  : "checkout-form__input"
+              }
               type="text"
               name="email"
               id="email"
@@ -184,19 +208,21 @@ const CheckoutForm = () => {
 
           <label
             className={
-              error
+              state.phone.error
                 ? "checkout-form__input-label--error"
                 : "checkout-form__input-label"
             }
             htmlFor="phone"
           >
             Phone Number
-            {error && (
+            {state.phone.error && (
               <span className="error-message">Invalid phone number</span>
             )}
             <input
               className={
-                error ? "checkout-form__input--error" : "checkout-form__input"
+                state.phone.error
+                  ? "checkout-form__input--error"
+                  : "checkout-form__input"
               }
               type="text"
               name="phone"
@@ -212,12 +238,23 @@ const CheckoutForm = () => {
         <fieldset className="checkout-form__form-section">
           <legend className="checkout-form__subtitle">Shipping info</legend>
           <label
-            className="checkout-form__input-label checkout-form__input-label--long"
+            className={
+              state.address.error
+                ? "checkout-form__input-label--error checkout-form__input-label--long"
+                : "checkout-form__input-label checkout-form__input-label--long"
+            }
             htmlFor="address"
           >
             Street Address
+            {state.address.error && (
+              <span className="error-message">Invalid street address</span>
+            )}
             <input
-              className="checkout-form__input"
+              className={
+                state.address.error
+                  ? "checkout-form__input--error"
+                  : "checkout-form__input"
+              }
               type="text"
               name="address"
               id="address"
@@ -228,10 +265,24 @@ const CheckoutForm = () => {
             />
           </label>
 
-          <label className="checkout-form__input-label" htmlFor="postcode">
+          <label
+            className={
+              state.postcode.error
+                ? "checkout-form__input-label--error"
+                : "checkout-form__input-label"
+            }
+            htmlFor="postcode"
+          >
             ZIP Code
+            {state.postcode.error && (
+              <span className="error-message">Invalid ZIP or postal code</span>
+            )}
             <input
-              className="checkout-form__input"
+              className={
+                state.postcode.error
+                  ? "checkout-form__input--error"
+                  : "checkout-form__input"
+              }
               type="text"
               name="postcode"
               id="postcode"
@@ -242,10 +293,24 @@ const CheckoutForm = () => {
             />
           </label>
 
-          <label className="checkout-form__input-label" htmlFor="city">
+          <label
+            className={
+              state.city.error
+                ? "checkout-form__input-label--error"
+                : "checkout-form__input-label"
+            }
+            htmlFor="city"
+          >
             City
+            {state.city.error && (
+              <span className="error-message">Invalid city</span>
+            )}
             <input
-              className="checkout-form__input"
+              className={
+                state.city.error
+                  ? "checkout-form__input--error"
+                  : "checkout-form__input"
+              }
               type="text"
               name="city"
               id="city"
@@ -256,10 +321,26 @@ const CheckoutForm = () => {
             />
           </label>
 
-          <label className="checkout-form__input-label" htmlFor="country">
+          <label
+            className={
+              state.country.error
+                ? "checkout-form__input-label--error"
+                : "checkout-form__input-label"
+            }
+            htmlFor="country"
+          >
             Country
+            {state.country.error && (
+              <span className="error-message">
+                Must be within United States or Canada
+              </span>
+            )}
             <input
-              className="checkout-form__input"
+              className={
+                state.country.error
+                  ? "checkout-form__input--error"
+                  : "checkout-form__input"
+              }
               type="text"
               name="country"
               id="country"
@@ -275,7 +356,14 @@ const CheckoutForm = () => {
           <legend className="checkout-form__subtitle">Payment details</legend>
           <p className="checkout-form__input-label">Payment Method</p>
           <div className="checkout-form__radio-container">
-            <label className="checkout-form__radio-label" htmlFor="emoney">
+            <label
+              className={
+                state.method.value === "emoney"
+                  ? "checkout-form__radio-label checkout-form__radio-label--selected"
+                  : "checkout-form__radio-label"
+              }
+              htmlFor="emoney"
+            >
               <input
                 className="checkout-form__radio-input"
                 type="radio"
@@ -288,7 +376,14 @@ const CheckoutForm = () => {
               e-Money
             </label>
 
-            <label className="checkout-form__radio-label" htmlFor="cash">
+            <label
+              className={
+                state.method.value === "cash"
+                  ? "checkout-form__radio-label checkout-form__radio-label--selected"
+                  : "checkout-form__radio-label"
+              }
+              htmlFor="cash"
+            >
               <input
                 className="checkout-form__radio-input"
                 type="radio"
@@ -296,19 +391,32 @@ const CheckoutForm = () => {
                 id="cash"
                 value="cash"
                 onChange={handleChange}
-                onBlur={handleBlur}
               />
               Cash on Delivery
             </label>
           </div>
 
-          {/* When selected, show this */}
+          {/* When emoney is selected, show payment info */}
           {state.method.value === "emoney" && (
             <>
-              <label className="checkout-form__input-label" htmlFor="enumber">
+              <label
+                className={
+                  state.enumber.error
+                    ? "checkout-form__input-label--error"
+                    : "checkout-form__input-label"
+                }
+                htmlFor="enumber"
+              >
                 e-Money Number
+                {state.enumber.error && (
+                  <span className="error-message">Invalid e-Money number</span>
+                )}
                 <input
-                  className="checkout-form__input"
+                  className={
+                    state.enumber.error
+                      ? "checkout-form__input--error"
+                      : "checkout-form__input"
+                  }
                   type="text"
                   name="enumber"
                   id="enumber"
@@ -319,10 +427,26 @@ const CheckoutForm = () => {
                 />
               </label>
 
-              <label className="checkout-form__input-label" htmlFor="epin">
+              <label
+                className={
+                  state.epin.error
+                    ? "checkout-form__input-label--error"
+                    : "checkout-form__input-label"
+                }
+                htmlFor="epin"
+              >
                 e-Money PIN
+                {state.epin.error && (
+                  <span className="error-message">
+                    Please enter your 4-digit PIN
+                  </span>
+                )}
                 <input
-                  className="checkout-form__input"
+                  className={
+                    state.epin.error
+                      ? "checkout-form__input--error"
+                      : "checkout-form__input"
+                  }
                   type="password"
                   name="epin"
                   id="epin"
@@ -334,7 +458,6 @@ const CheckoutForm = () => {
               </label>
             </>
           )}
-          {/* else, show nothing */}
         </fieldset>
       </div>
       <CheckoutSummary />
