@@ -1,30 +1,23 @@
-import './App.scss';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Header from './components/Header/Header';
-import Footer from './components/Footer/Footer';
-import HomePage from './pages/HomePage/HomePage';
-import ProductCategoryPage from './pages/ProductCategoryPage/ProductCategoryPage';
-import ProductDetailsPage from './pages/ProductDetailsPage/ProductDetailsPage';
-import CheckoutPage from './pages/CheckoutPage/CheckoutPage';
-import { ProductsProvider } from './contexts/ProductsContext';
-import { CategoryProvider } from './contexts/CategoryContext';
+import "./App.scss";
+import { BrowserRouter } from "react-router-dom";
+import { Provider } from "react-redux";
+
+import { ProductsProvider } from "./contexts/ProductsContext";
+import { CategoryProvider } from "./contexts/CategoryContext";
+import store from "./store/index";
+import Routes from "./routes";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Header />
-      <ProductsProvider>
-        <CategoryProvider>
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/:categoryName" element={<ProductCategoryPage />} />
-            <Route path="/:categoryName/:productSlug" element={<ProductDetailsPage />} />
-            <Route path="/checkout" element={<CheckoutPage />} />
-          </Routes>
-        </CategoryProvider>
-      </ProductsProvider>
-      <Footer />
-    </BrowserRouter>
+    <Provider store={store}>
+      <CategoryProvider>
+        <ProductsProvider>
+          <BrowserRouter>
+            <Routes />
+          </BrowserRouter>
+        </ProductsProvider>
+      </CategoryProvider>
+    </Provider>
   );
 }
 

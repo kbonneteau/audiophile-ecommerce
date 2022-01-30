@@ -4,6 +4,19 @@ import thunkMiddleware from "redux-thunk";
 
 import cart from "./cart";
 
+const appReducer = combineReducers({ cart });
+
+const rootReducer = (state, action) => {
+  return appReducer(state, action);
+};
+
+const store = createStore(
+  rootReducer,
+  applyMiddleware(thunkMiddleware, loggerMiddleware)
+);
+
+export default store;
+
 /* STORE 
 
 INITIALIZATION
