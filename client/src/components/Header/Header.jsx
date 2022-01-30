@@ -1,15 +1,16 @@
 import "./Header.scss";
 import { useState } from "react";
 import { NavLink, Link } from "react-router-dom";
+import { connect } from "react-redux";
 import hamburgerIcon from "../../assets/icons/icon-hamburger.svg";
 import cartIcon from "../../assets/icons/icon-cart.svg";
-// import cartIconHover from '../../assets/icons/icon-cart-alt.svg';
 import companyLogo from "../../assets/images/logo.svg";
 import NavModal from "../NavModal/NavModal";
 
-const Header = () => {
+const Header = (props) => {
   const [navOpen, setNavOpen] = useState(false);
   const handleNavToggle = () => setNavOpen((prevState) => !prevState);
+  console.log(props);
 
   return (
     <>
@@ -54,4 +55,8 @@ const Header = () => {
   );
 };
 
-export default Header;
+const mapStateToProps = (state) => {
+  return state;
+};
+
+export default connect(mapStateToProps)(Header);

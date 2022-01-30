@@ -1,5 +1,5 @@
-import React from "react";
-import { Routes as Switch, Route, withRouter } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Routes as Switch, Route } from "react-router-dom";
 import { connect } from "react-redux";
 
 import Header from "./components/Header/Header";
@@ -8,8 +8,17 @@ import HomePage from "./pages/HomePage/HomePage";
 import ProductCategoryPage from "./pages/ProductCategoryPage/ProductCategoryPage";
 import ProductDetailsPage from "./pages/ProductDetailsPage/ProductDetailsPage";
 import CheckoutPage from "./pages/CheckoutPage/CheckoutPage";
+import { fetchCart } from "./store/utils/thunkCreators";
 
-const Routes = () => {
+const Routes = (props) => {
+  console.log("State", props);
+  const { fetchCart } = props;
+  useEffect(() => {
+    console.log("useEffect");
+    const token = JSON.parse(localStorage.getItem("token"));
+    fetchCart(token);
+  }, [fetchCart]);
+
   return (
     <>
       <Header />
@@ -27,4 +36,16 @@ const Routes = () => {
   );
 };
 
-export default Routes;
+const mapStateToProps = (state) => {
+  return state;
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchCart: (message) => {
+      dispatch(fetchCart(message));
+    },
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Routes);

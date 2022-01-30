@@ -8,9 +8,7 @@ import ProductCategoryList from "../../components/ProductCategoryList/ProductCat
 import FeaturedProducts from "../../components/FeaturedProducts/FeaturedProducts";
 import MissionStatement from "../../components/MissionStatement/MissionStatement";
 
-const HomePage = (props) => {
-  console.log(props);
-
+const HomePage = () => {
   useEffect(() => {
     document.title = `Audiophile`;
     window.scrollTo(0, 0);
