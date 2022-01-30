@@ -137,7 +137,8 @@
     vertical-align: center;
     cursor: pointer;
 
-    &--selected {
+    &--selected,
+    &:hover {
       border-color: $primary-accent;
     }
   }
