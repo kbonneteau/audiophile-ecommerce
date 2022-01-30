@@ -1,5 +1,5 @@
 import "./CheckoutForm.scss";
-import React, { useState, useReducer } from "react";
+import React, { useReducer } from "react";
 import CheckoutSummary from "../CheckoutSummary/CheckoutSummary";
 import { isInputValid } from "../../utils/validationUtils";
 
@@ -8,60 +8,24 @@ const ACTIONS = {
   UPDATE_ERROR: "update error status",
 };
 
-// Should both the value and the error be held in state?
-const initialState = {
-  name: {
-    value: "",
-    error: false,
-  },
-  email: {
-    value: "",
-    error: false,
-  },
-  phone: {
-    value: "",
-    error: false,
-  },
-  address: {
-    value: "",
-    error: false,
-  },
-  postcode: {
-    value: "",
-    error: false,
-  },
-  city: {
-    value: "",
-    error: false,
-  },
-  country: {
-    value: "",
-    error: false,
-  },
-  method: {
-    value: "",
-    error: false,
-  },
-  enumber: {
-    value: "",
-    error: false,
-  },
-  epin: {
-    value: "",
-    error: false,
-  },
+const initialStateValue = {
+  value: "",
+  error: false,
 };
 
-// CURRENT TASKS:
-// ✅ TODO: update reducer to handle value change with updated state schema
-// ✅ TODO: add UPDATE_ERROR to actions
-// ✅ TODO: add validation logic to handleBlur for validating field
-// ✅ TODO: add dynamic error fields to each of the form fields
-// TODO: add submit logic functionality:
-//        - If any errors, don't submit
-//        - Complete a final check for errors
-//        - depending on payment method, don't check epin and emoney number if cash
-// Should I promisify the validation check? resolve success, reject on validation fail....
+const initialState = {
+  name: initialStateValue,
+  email: initialStateValue,
+  phone: initialStateValue,
+  address: initialStateValue,
+  postcode: initialStateValue,
+  city: initialStateValue,
+  country: initialStateValue,
+  method: initialStateValue,
+  enumber: initialStateValue,
+  epin: initialStateValue,
+};
+
 const reducer = (state, action) => {
   switch (action.type) {
     case ACTIONS.UPDATE_VALUE:
@@ -87,20 +51,54 @@ const reducer = (state, action) => {
 
 const CheckoutForm = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
-  // eslint-disable-next-line
-  const [error, setError] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("submitted!");
-    // console.log(state);
+    let error = false;
+
     for (const formField in state) {
-      console.log(`${formField}: ${state[formField].value}`);
-      console.log(
-        "is this a valid input?",
-        isInputValid(formField, state[formField].value, state.country.value)
+      // Do a final validity check for all form fields
+      const isValid = isInputValid(
+        formField,
+        state[formField].value,
+        state.country.value || "us"
       );
+
+      // remove errors for now valid input
+      if (isValid && state[formField].error) {
+        dispatch({
+          type: ACTIONS.UPDATE_ERROR,
+          payload: {
+            field: formField,
+            errorStatus: false,
+          },
+        });
+      }
+
+      if (!isValid) {
+        if (
+          (formField === "enumber" || formField === "epin") &&
+          state.method.value === "cash"
+        ) {
+          break;
+        }
+
+        error = true;
+        // set errors for form fields if not already set
+        !state[formField].error &&
+          dispatch({
+            type: ACTIONS.UPDATE_ERROR,
+            payload: {
+              field: formField,
+              errorStatus: true,
+            },
+          });
+      }
     }
+
+    if (error) return;
+    // TODO: send payment information forward
+    console.log("finished checking all values -- no errors");
   };
 
   const handleChange = (e) => {
@@ -111,23 +109,12 @@ const CheckoutForm = () => {
         value: e.target.value,
       },
     });
-
-    // const validationTool = selectValidator(inputType);
-    // if (validationTool(e.target.value, "en-CA")) {
-    //   setError(false);
-    // } else {
-    //   if (!error) setError(true);
-    // }
-    // console.log(
-    //   "is this a valid phone number?",
-    //   validationTool(e.target.value, "en-CA")
-    // );
   };
 
   const handleBlur = (e) => {
     const { name } = e.target;
 
-    // check if the input is valid
+    // check if input is valid and set error message accordingly
     dispatch({
       type: ACTIONS.UPDATE_ERROR,
       payload: {
