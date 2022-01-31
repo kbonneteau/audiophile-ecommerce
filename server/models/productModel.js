@@ -9,8 +9,9 @@ const readAllProducts = async () => {
     try {
         const db = await connectToDatabase();
         return await db.collection("products").find({}).toArray();
-    } catch {
+    } catch (error ){
         console.log("error in reading products");
+        console.log(error);
         return false;
     }
 };
