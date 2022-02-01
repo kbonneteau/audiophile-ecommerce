@@ -3,10 +3,8 @@ const cartController = require("../controllers/cartController");
 
 router
   .route("/:cartId")
-  .get(cartController.getCart)
-  .post(cartController.addNewCart);
-// .put(async (req, res) => {
-//   const { cartId } = req.params;
-// });
+  .get(cartController.getSingleCart)
+  .post(cartController.addNewCart)
+  .put(cartController.updateCartItems);
 
 module.exports = router;

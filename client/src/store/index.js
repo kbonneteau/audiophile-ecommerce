@@ -6,7 +6,7 @@ import cart from "./cart";
 
 // TODO: Initialize state with either local storage, or start a new session
 // TODO: Set up JWT or express session to handle cart expiry (24 hours)
-// TODO: Set up DB cart collection
+// ✅ TODO: Set up DB cart collection
 // TODO: Set up DB seed for testing and resetting data
 
 const appReducer = combineReducers({ cart });

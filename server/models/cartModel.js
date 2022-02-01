@@ -6,10 +6,20 @@ const catchError = (error) => {
   console.log(error);
 };
 
-const readCarts = async () => {
+const readAllCarts = async () => {
   try {
     const db = await connectToDatabase();
     return await db.collection("carts").find({}).toArray();
+  } catch (error) {
+    catchError(error);
+    return false;
+  }
+};
+
+const readCart = async (cartId) => {
+  try {
+    const db = await connectToDatabase();
+    return await db.collection("carts").find({ cartId: cartId }).toArray();
   } catch (error) {
     catchError(error);
     return false;
@@ -33,7 +43,26 @@ const addCart = async (cartId) => {
   }
 };
 
+const updateCart = async (cartId, items) => {
+  try {
+    const db = await connectToDatabase();
+    const result = await db.collection("carts").updateOne(
+      { cartId: cartId },
+      {
+        $set: { cartItems: items },
+        $currentDate: { lastModified: true },
+      }
+    );
+    return result;
+  } catch (error) {
+    catchError(error);
+    return false;
+  }
+};
+
 module.exports = {
-  readCarts,
+  readAllCarts,
+  readCart,
   addCart,
+  updateCart,
 };
