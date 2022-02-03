@@ -5,6 +5,7 @@ router
   .route("/:cartId")
   .get(cartController.getSingleCart)
   .post(cartController.addNewCart)
-  .put(cartController.updateCartItems);
+  .put(cartController.updateCartItems)
+  .delete(cartController.deleteCartItems);
 
 module.exports = router;

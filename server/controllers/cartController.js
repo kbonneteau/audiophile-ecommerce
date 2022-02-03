@@ -43,6 +43,16 @@ const cartController = {
       res.status(200).json({ message: "cart updated", items: cartItems });
     }
   },
+
+  deleteCartItems: async (req, res) => {
+    const { cartId } = req.params;
+    const result = await cartModel.updateCart(cartId, []); // reset cart to empty array
+    if (!result.modifiedCount) {
+      res.status(404).json({ error: "Cart not found" });
+    } else {
+      res.status(200).json({ message: "Cart items removed", items: [] });
+    }
+  },
 };
 
 module.exports = cartController;

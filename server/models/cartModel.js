@@ -1,5 +1,5 @@
 const { MongoClient } = require("mongodb");
-const connectToDatabase = require("../connect-to-database");
+const { connectToDatabase } = require("../db/connect-to-database");
 
 const catchError = (error) => {
   console.log("Error in fetching carts");
