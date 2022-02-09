@@ -27,7 +27,7 @@ const ProductCTA = ({ product }) => {
         <p className="product-cta__description">{product.description}</p>
         <NumberFormat
           className="product-cta__price"
-          value={product.slug}
+          value={product.price}
           prefix="$"
           displayType={"text"}
           thousandSeparator={true}

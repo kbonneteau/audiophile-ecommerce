@@ -39,13 +39,29 @@ const cartController = {
     const { item, quantity } = req.body;
 
     const foundCart = await cartModel.readCart(cartId);
+    const itemIndex = foundCart[0].cartItems.findIndex(
+      (cartItem) => cartItem.item === item
+    );
 
-    // TODO: MAP through existing cartItems to find the same item
-    // - if it exists, sum the quantities
-    // - else, simply return the new item
-    // Consider if this should be handled on front-end
-    const allCartItems = [...foundCart[0].cartItems, { item, quantity }];
-    // console.log("all cart items", allCartItems);
+    let allCartItems = [];
+
+    if (itemIndex >= 0) {
+      allCartItems = foundCart[0].cartItems.map((cartItem, i) =>
+        itemIndex === i
+          ? {
+              ...cartItem,
+              quantity: Number(cartItem.quantity) + Number(quantity),
+            }
+          : cartItem
+      );
+    } else {
+      allCartItems = [
+        ...foundCart[0].cartItems,
+        { item, quantity: Number(quantity) },
+      ];
+    }
+
+    console.log("all cart items", allCartItems);
     const result = await cartModel.updateCart(cartId, allCartItems);
     if (!result.modifiedCount) {
       res.status(404).json({ error: "Cart not found" });
