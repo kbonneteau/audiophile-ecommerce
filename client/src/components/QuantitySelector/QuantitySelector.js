@@ -16,7 +16,11 @@ const QuantitySelector = ({ selectedQuantity }) => {
 
   return (
     <div className="quantity-selector">
-      <button className="quantity-selector__decrement" onClick={decrementCount}>
+      <button
+        className="quantity-selector__decrement"
+        type="button"
+        onClick={decrementCount}
+      >
         -
       </button>
       <input
@@ -29,7 +33,11 @@ const QuantitySelector = ({ selectedQuantity }) => {
         onChange={() => null}
         value={quantity}
       />
-      <button className="quantity-selector__increment" onClick={incrementCount}>
+      <button
+        className="quantity-selector__increment"
+        type="button"
+        onClick={incrementCount}
+      >
         +
       </button>
     </div>

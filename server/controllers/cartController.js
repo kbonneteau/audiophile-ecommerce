@@ -35,12 +35,22 @@ const cartController = {
 
   updateCartItems: async (req, res) => {
     const { cartId } = req.params;
-    const { cartItems } = req.body;
-    const result = await cartModel.updateCart(cartId, cartItems);
+    // NOTE: these variables may change in the future
+    const { item, quantity } = req.body;
+
+    const foundCart = await cartModel.readCart(cartId);
+
+    // TODO: MAP through existing cartItems to find the same item
+    // - if it exists, sum the quantities
+    // - else, simply return the new item
+    // Consider if this should be handled on front-end
+    const allCartItems = [...foundCart[0].cartItems, { item, quantity }];
+    // console.log("all cart items", allCartItems);
+    const result = await cartModel.updateCart(cartId, allCartItems);
     if (!result.modifiedCount) {
       res.status(404).json({ error: "Cart not found" });
     } else {
-      res.status(200).json({ message: "cart updated", items: cartItems });
+      res.status(200).json({ message: "cart updated", items: allCartItems });
     }
   },
 
