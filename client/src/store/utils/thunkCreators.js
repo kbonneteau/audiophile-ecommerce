@@ -52,3 +52,11 @@ export const postCartItem = (cartId, cartItem) => async (dispatch) => {
     console.error(error);
   }
 };
+
+export const deleteCartItems = (cartId) => async (dispatch) => {
+  console.log("Delete cart items!");
+  try {
+  } catch (error) {
+    console.error(error);
+  }
+};
