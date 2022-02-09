@@ -66,7 +66,7 @@ const cartController = {
     if (!result.modifiedCount) {
       res.status(404).json({ error: "Cart not found" });
     } else {
-      res.status(200).json({ message: "cart updated", items: allCartItems });
+      res.status(200).json({ items: allCartItems });
     }
   },
 

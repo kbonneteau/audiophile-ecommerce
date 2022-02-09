@@ -16,12 +16,11 @@ export const gotCart = (cart) => {
   };
 };
 
-export const addCartItem = (cartId, items) => {
+export const addCartItem = (items) => {
   console.log("action creator entered :: addCartItem");
   return {
     type: ADD_CART_ITEM,
     payload: {
-      cartId,
       items,
     },
   };

@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import QuantitySelector from "../QuantitySelector/QuantitySelector";
 import { postCartItem } from "../../store/utils/thunkCreators";
 
-const ProductQuantityForm = ({ slug, cartId, cartItems, postCartItem }) => {
+const ProductQuantityForm = ({ slug, cartId, postCartItem }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     postCartItem(cartId, { item: slug, quantity: e.target.quantity.value });
@@ -21,10 +21,9 @@ const ProductQuantityForm = ({ slug, cartId, cartItems, postCartItem }) => {
 };
 
 const mapStateToProps = (state) => {
-  const { cartId, cartItems } = state.cart[0];
+  const { cartId } = state.cart[0];
   return {
     cartId,
-    cartItems,
   };
 };
 

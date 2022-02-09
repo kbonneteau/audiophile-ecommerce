@@ -24,7 +24,6 @@ const saveNewCart = async () => {
 };
 
 export const fetchCart = (cartId) => async (dispatch) => {
-  console.log("thunk creator entered");
   try {
     let data = {};
     if (cartId) {
@@ -39,17 +38,16 @@ export const fetchCart = (cartId) => async (dispatch) => {
 };
 
 export const postCartItem = (cartId, cartItem) => async (dispatch) => {
-  console.log("update cart entered");
-  console.log(cartItem);
-
   try {
     // post to server to update cart.
     const result = await axios.put(
       `${API_BASE_URL}${API_CART}/${cartId}`,
       cartItem
     );
-    console.log("result of putting cart item to server:", result);
-    // TODO: on success, update the cart in store
+    const { items } = result.data;
+    if (items) {
+      dispatch(addCartItem(items));
+    }
   } catch (error) {
     console.error(error);
   }
