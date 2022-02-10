@@ -1,0 +1,14 @@
+@use "../../partials/typography" as *;
+@use "../../partials/mixins" as *;
+@use "../../partials/variables" as *;
+@use "../../partials/keyframes" as *;
+
+@use "../NavModal/NavModal.scss" as *;
+
+.cart-modal {
+  @extend .navigation-modal;
+
+  &__overlay {
+    @extend .navigation-modal__overlay;
+  }
+}

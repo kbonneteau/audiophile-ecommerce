@@ -1,16 +1,19 @@
-import "./Header.scss";
 import { useState } from "react";
 import { NavLink, Link } from "react-router-dom";
 import { connect } from "react-redux";
+
+import "./Header.scss";
 import hamburgerIcon from "../../assets/icons/icon-hamburger.svg";
 import cartIcon from "../../assets/icons/icon-cart.svg";
 import companyLogo from "../../assets/images/logo.svg";
 import NavModal from "../NavModal/NavModal";
+import CartModal from "../CartModal/CartModal";
 
-const Header = (props) => {
+const Header = ({ cart }) => {
   const [navOpen, setNavOpen] = useState(false);
+  const [cartOpen, setCartOpen] = useState(false);
   const handleNavToggle = () => setNavOpen((prevState) => !prevState);
-  console.log(props);
+  const handleCartToggle = () => setCartOpen((prevState) => !prevState);
 
   return (
     <>
@@ -47,10 +50,16 @@ const Header = (props) => {
             className="site-header__cart"
             src={cartIcon}
             alt="shopping cart icon"
+            onClick={handleCartToggle}
           />
         </div>
       </header>
       <NavModal isOpen={navOpen} onClose={() => setNavOpen(false)} />
+      <CartModal
+        isOpen={cartOpen}
+        cart={cart[0]}
+        onClose={() => setCartOpen(false)}
+      />
     </>
   );
 };
