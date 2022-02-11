@@ -1,8 +1,12 @@
 import "./QuantitySelector.scss";
 
-const QuantitySelector = ({ quantity, setQuantity }) => {
-  const decrementCount = () =>
-    quantity > 1 && setQuantity((prevQuantity) => prevQuantity - 1);
+const QuantitySelector = ({ quantity, setQuantity, location }) => {
+  const decrementCount = () => {
+    if (location === "cart") {
+      return quantity > 0 && setQuantity((prevQuantity) => prevQuantity - 1);
+    }
+    return quantity > 1 && setQuantity((prevQuantity) => prevQuantity - 1);
+  };
 
   const incrementCount = () =>
     quantity < 99 && setQuantity((prevQuantity) => prevQuantity + 1);

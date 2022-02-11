@@ -19,10 +19,16 @@ const CartQuantity = ({ item, cartQuantity, dispatch, action }) => {
   }, [quantity, action, dispatch, item]);
 
   return (
-    <>
-      <p>{item} </p>
-      <QuantitySelector quantity={quantity} setQuantity={setQuantity} />
-    </>
+    quantity > 0 && (
+      <>
+        <p>{item} </p>
+        <QuantitySelector
+          quantity={quantity}
+          setQuantity={setQuantity}
+          location={"cart"}
+        />
+      </>
+    )
   );
 };
 

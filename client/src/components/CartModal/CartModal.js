@@ -38,6 +38,7 @@ const CartModal = ({ isOpen, onClose, cartId, cartItems }) => {
   }, [cartItems]);
 
   useEffect(() => {
+    // Add each of the cart items to component state
     if (items.length > 0) {
       items.forEach((cartItem) => {
         console.log(cartItem);
