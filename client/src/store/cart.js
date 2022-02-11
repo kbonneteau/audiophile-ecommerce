@@ -1,11 +1,15 @@
-import { addItemToStore, removeItemsFromStore } from "./utils/reducerFunctions";
+import {
+  addItemToStore,
+  removeItemsFromStore,
+  updateQuantitiesInStore,
+} from "./utils/reducerFunctions";
 
 // ACTIONS
 
 const GET_CART = "GET_CART";
 const ADD_CART_ITEM = "ADD_CART_ITEM";
 const REMOVE_CART_ITEMS = "REMOVE_CART_ITEMS";
-// const UPDATE_CART_QUANTITY = "UPDATE_CART_QUANTITY";
+const UPDATE_CART_QUANTITY = "UPDATE_CART_QUANTITY";
 
 // ACTION CREATORS
 
@@ -19,6 +23,16 @@ export const gotCart = (cart) => {
 export const addCartItem = (items) => {
   return {
     type: ADD_CART_ITEM,
+    payload: {
+      items,
+    },
+  };
+};
+
+export const updateItemQuantity = (items) => {
+  console.log("action creator :: update");
+  return {
+    type: UPDATE_CART_QUANTITY,
     payload: {
       items,
     },
@@ -42,6 +56,8 @@ const reducer = (state = {}, action) => {
       return addItemToStore(state, action.payload);
     case REMOVE_CART_ITEMS:
       return removeItemsFromStore(state);
+    case UPDATE_CART_QUANTITY:
+      return updateQuantitiesInStore(state, action.payload);
     default:
       return state;
   }

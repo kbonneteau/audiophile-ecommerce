@@ -9,12 +9,6 @@ const ProductQuantityForm = ({ slug }) => {
   const dispatch = useDispatch();
   const [quantity, setQuantity] = useState(1);
 
-  // const decrementCount = () =>
-  //   quantity > 1 && setQuantity((prevQuantity) => prevQuantity - 1);
-
-  // const incrementCount = () =>
-  //   quantity < 99 && setQuantity((prevQuantity) => prevQuantity + 1);
-
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(
@@ -25,12 +19,7 @@ const ProductQuantityForm = ({ slug }) => {
 
   return (
     <form className="quantity-form" onSubmit={handleSubmit}>
-      <QuantitySelector
-        quantity={quantity}
-        setQuantity={setQuantity}
-        // decrementCount={decrementCount}
-        // incrementCount={incrementCount}
-      />
+      <QuantitySelector quantity={quantity} setQuantity={setQuantity} />
       <button className="quantity-form__add-to-cart" type="submit">
         Add to cart
       </button>

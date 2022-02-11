@@ -8,11 +8,15 @@ export const addItemToStore = (state, payload) => {
 };
 
 export const removeItemsFromStore = (state) => {
-  console.log("remove items from store");
   return state.map((cart) => {
     return {
       ...cart,
       cartItems: [],
     };
   });
+};
+
+export const updateQuantitiesInStore = (state, payload) => {
+  console.log("Update items in store");
+  return state;
 };

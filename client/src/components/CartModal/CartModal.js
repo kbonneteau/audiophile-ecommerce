@@ -1,9 +1,13 @@
 import React, { useEffect, useReducer, useMemo } from "react";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 import "./CartModal.scss";
 import CartQuantity from "../CartQuantity/CartQuantity";
-import { deleteCartItems } from "../../store/utils/thunkCreators";
+import {
+  deleteCartItems,
+  updateCartQuantities,
+} from "../../store/utils/thunkCreators";
 
 const ACTIONS = {
   ADD_ITEM_TO_STATE: "ADD_ITEM_TO_STATE",
@@ -33,6 +37,7 @@ const reducer = (state, action) => {
 const CartModal = ({ isOpen, onClose, cartId, cartItems }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const reduxDispatch = useDispatch();
+  const navigate = useNavigate();
   const items = useMemo(() => {
     return cartItems;
   }, [cartItems]);
@@ -60,6 +65,9 @@ const CartModal = ({ isOpen, onClose, cartId, cartItems }) => {
 
   const handleCheckout = () => {
     console.log("checkOUTTTT");
+    reduxDispatch(updateCartQuantities(cartId, state));
+    navigate("/checkout");
+    onClose();
   };
 
   console.log("useReducer state", state);
