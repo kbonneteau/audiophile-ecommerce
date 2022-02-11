@@ -1,5 +1,4 @@
 import "./QuantitySelector.scss";
-import { useState } from "react";
 
 const QuantitySelector = ({ quantity, setQuantity }) => {
   const decrementCount = () =>
