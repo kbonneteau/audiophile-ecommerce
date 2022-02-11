@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { NavLink, Link } from "react-router-dom";
-import { connect } from "react-redux";
+import { useSelector } from "react-redux";
 
 import "./Header.scss";
 import hamburgerIcon from "../../assets/icons/icon-hamburger.svg";
@@ -9,7 +9,8 @@ import companyLogo from "../../assets/images/logo.svg";
 import NavModal from "../NavModal/NavModal";
 import CartModal from "../CartModal/CartModal";
 
-const Header = ({ cart }) => {
+const Header = () => {
+  const cart = useSelector((state) => state.cart[0]);
   const [navOpen, setNavOpen] = useState(false);
   const [cartOpen, setCartOpen] = useState(false);
   const handleNavToggle = () => setNavOpen((prevState) => !prevState);
@@ -55,17 +56,16 @@ const Header = ({ cart }) => {
         </div>
       </header>
       <NavModal isOpen={navOpen} onClose={() => setNavOpen(false)} />
-      <CartModal
-        isOpen={cartOpen}
-        cart={cart[0]}
-        onClose={() => setCartOpen(false)}
-      />
+      {cart && (
+        <CartModal
+          isOpen={cartOpen}
+          cartId={cart.cartId}
+          cartItems={cart.cartItems}
+          onClose={() => setCartOpen(false)}
+        />
+      )}
     </>
   );
 };
 
-const mapStateToProps = (state) => {
-  return state;
-};
-
-export default connect(mapStateToProps)(Header);
+export default Header;

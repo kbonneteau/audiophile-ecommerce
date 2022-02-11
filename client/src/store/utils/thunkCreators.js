@@ -2,7 +2,7 @@ import axios from "axios";
 import { v4 as uuid } from "uuid";
 import { API_BASE_URL, API_CART } from "../../utils/apiUtils";
 // import action creators from conversations
-import { gotCart, addCartItem } from "../cart";
+import { gotCart, addCartItem, removeAllCartItems } from "../cart";
 
 // Consider if request interceptors should be used for axios
 
@@ -56,6 +56,11 @@ export const postCartItem = (cartId, cartItem) => async (dispatch) => {
 export const deleteCartItems = (cartId) => async (dispatch) => {
   console.log("Delete cart items!");
   try {
+    const result = await axios.delete(`${API_BASE_URL}${API_CART}/${cartId}`);
+    const { items } = result.data;
+    if (items) {
+      dispatch(removeAllCartItems());
+    }
   } catch (error) {
     console.error(error);
   }

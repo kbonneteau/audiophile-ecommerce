@@ -26,6 +26,7 @@ export const addCartItem = (items) => {
 };
 
 export const removeAllCartItems = () => {
+  console.log("remove all cart items");
   return {
     type: REMOVE_CART_ITEMS,
   };

@@ -1,13 +1,17 @@
+import React from "react";
+import { useSelector, useDispatch } from "react-redux";
 import "./ProductQuantityForm.scss";
-import React, { useState } from "react";
-import { connect } from "react-redux";
 import QuantitySelector from "../QuantitySelector/QuantitySelector";
 import { postCartItem } from "../../store/utils/thunkCreators";
 
-const ProductQuantityForm = ({ slug, cartId, postCartItem }) => {
+const ProductQuantityForm = ({ slug }) => {
+  const cartId = useSelector((state) => state.cart[0].cartId);
+  const dispatch = useDispatch();
   const handleSubmit = (e) => {
     e.preventDefault();
-    postCartItem(cartId, { item: slug, quantity: e.target.quantity.value });
+    dispatch(
+      postCartItem(cartId, { item: slug, quantity: e.target.quantity.value })
+    );
   };
 
   return (
@@ -20,22 +24,4 @@ const ProductQuantityForm = ({ slug, cartId, postCartItem }) => {
   );
 };
 
-const mapStateToProps = (state) => {
-  const { cartId } = state.cart[0];
-  return {
-    cartId,
-  };
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    postCartItem: (cartId, cartItem) => {
-      dispatch(postCartItem(cartId, cartItem));
-    },
-  };
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ProductQuantityForm);
+export default ProductQuantityForm;
