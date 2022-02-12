@@ -8,4 +8,6 @@ router
   .put(cartController.updateCartItems)
   .delete(cartController.deleteCartItems);
 
+router.route("/:cartId/quantity").put(cartController.updateCartQuantities);
+
 module.exports = router;

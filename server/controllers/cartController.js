@@ -70,6 +70,22 @@ const cartController = {
     }
   },
 
+  updateCartQuantities: async (req, res) => {
+    const { cartId } = req.params;
+    const { cartItems } = req.body;
+    console.log(cartId);
+    console.log(cartItems);
+
+    res.send("hello");
+
+    // const result = await cartModel.updateCart(cartId, []); // reset cart to empty array
+    // if (!result.modifiedCount) {
+    //   res.status(404).json({ error: "Cart not found" });
+    // } else {
+    //   res.status(200).json({ items: [] });
+    // }
+  },
+
   deleteCartItems: async (req, res) => {
     const { cartId } = req.params;
     const result = await cartModel.updateCart(cartId, []); // reset cart to empty array

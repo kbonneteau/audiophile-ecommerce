@@ -56,7 +56,7 @@ const Header = () => {
         </div>
       </header>
       <NavModal isOpen={navOpen} onClose={() => setNavOpen(false)} />
-      {cart && (
+      {cart && cartOpen && (
         <CartModal
           isOpen={cartOpen}
           cartId={cart.cartId}

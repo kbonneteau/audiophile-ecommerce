@@ -12,22 +12,48 @@ import {
 const ACTIONS = {
   ADD_ITEM_TO_STATE: "ADD_ITEM_TO_STATE",
   UPDATE_QUANTITY: "UPDATE_QUANTITY",
+  RESET_STATE: "RESET_STATE",
 };
 
-const initialState = {};
+const initialState = {
+  items: [],
+};
 
 const reducer = (state, action) => {
-  console.log(action.type, action.payload);
   switch (action.type) {
     case ACTIONS.ADD_ITEM_TO_STATE:
       return {
         ...state,
-        [action.payload.item]: action.payload.quantity,
+        items: [
+          ...state.items,
+          {
+            item: action.payload.item,
+            quantity: action.payload.quantity,
+          },
+        ],
       };
     case ACTIONS.UPDATE_QUANTITY:
       return {
         ...state,
-        [action.payload.item]: action.payload.quantity,
+        items: state.items.map((item) => {
+          if (item.item === action.payload.item) {
+            return {
+              ...item,
+              quantity: action.payload.quantity,
+            };
+          }
+          return item;
+        }),
+
+        // [
+
+        //   ...state.items,
+        //   {
+        //     item: action.payload.item,
+        //     quantity: action.payload.quantity,
+        //   },
+        // ],
+        // [action.payload.item]: action.payload.quantity,
       };
     default:
       return state;
@@ -63,18 +89,12 @@ const CartModal = ({ isOpen, onClose, cartId, cartItems }) => {
     reduxDispatch(deleteCartItems(cartId));
   };
 
-  const handleCheckout = () => {
+  const handleCheckout = async () => {
     console.log("checkOUTTTT");
-    reduxDispatch(updateCartQuantities(cartId, state));
+    reduxDispatch(updateCartQuantities(cartId, state.items));
     navigate("/checkout");
     onClose();
   };
-
-  console.log("useReducer state", state);
-  // console.log(cartItems);
-  // const handleQtyChange = (newQty) => {
-  //   console.log("New quantity:", newQty);
-  // };
 
   /*
     ✅ Consider this: create individual "line item" components, each with their own "quantity, setQuantity" state pair

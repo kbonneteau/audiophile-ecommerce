@@ -60,8 +60,22 @@ export const postCartItem = (cartId, cartItem) => async (dispatch) => {
 
 export const updateCartQuantities = (cartId, items) => async (dispatch) => {
   console.log("Update cart quantities");
+  console.log(cartId);
+  console.log(items);
+  // const cartItems = [];
+  // for (const itemName in items) {
+  //   cartItems.push({ item: itemName, quantity: items[itemName] });
+  // }
+  // console.log(cartItems);
   try {
-    dispatch(updateItemQuantity());
+    const result = await axios.put(
+      `${API_BASE_URL}${API_CART}/${cartId}/quantity`,
+      {
+        cartItems: items,
+      }
+    );
+    console.log(result);
+    // dispatch(updateItemQuantity());
   } catch (error) {
     console.error(error);
   }
