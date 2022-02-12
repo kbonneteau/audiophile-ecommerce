@@ -73,17 +73,14 @@ const cartController = {
   updateCartQuantities: async (req, res) => {
     const { cartId } = req.params;
     const { cartItems } = req.body;
-    console.log(cartId);
-    console.log(cartItems);
+    const updatedCartItems = cartItems.filter((item) => item.quantity > 0);
+    const result = await cartModel.updateCart(cartId, updatedCartItems);
 
-    res.send("hello");
-
-    // const result = await cartModel.updateCart(cartId, []); // reset cart to empty array
-    // if (!result.modifiedCount) {
-    //   res.status(404).json({ error: "Cart not found" });
-    // } else {
-    //   res.status(200).json({ items: [] });
-    // }
+    if (!result.modifiedCount) {
+      res.status(404).json({ error: "Cart not found" });
+    } else {
+      res.status(200).json({ items: updatedCartItems });
+    }
   },
 
   deleteCartItems: async (req, res) => {

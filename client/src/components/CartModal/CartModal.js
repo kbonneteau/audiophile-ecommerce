@@ -44,16 +44,6 @@ const reducer = (state, action) => {
           }
           return item;
         }),
-
-        // [
-
-        //   ...state.items,
-        //   {
-        //     item: action.payload.item,
-        //     quantity: action.payload.quantity,
-        //   },
-        // ],
-        // [action.payload.item]: action.payload.quantity,
       };
     default:
       return state;
@@ -72,7 +62,6 @@ const CartModal = ({ isOpen, onClose, cartId, cartItems }) => {
     // Add each of the cart items to component state
     if (items.length > 0) {
       items.forEach((cartItem) => {
-        console.log(cartItem);
         const { item, quantity } = cartItem;
         dispatch({
           type: ACTIONS.ADD_ITEM_TO_STATE,
@@ -90,28 +79,15 @@ const CartModal = ({ isOpen, onClose, cartId, cartItems }) => {
   };
 
   const handleCheckout = async () => {
-    console.log("checkOUTTTT");
-    reduxDispatch(updateCartQuantities(cartId, state.items));
+    await reduxDispatch(updateCartQuantities(cartId, state.items));
     navigate("/checkout");
     onClose();
   };
 
   /*
-    ✅ Consider this: create individual "line item" components, each with their own "quantity, setQuantity" state pair
-    - from the parent, hold the state in some kind of object (maybe useReducer?)
-    - from the parent, send a dispatch to update the state
-
-    // ✅ TODO => Dynamically create and store quantity state (and setter?) when component mounts
-    // ✅ TODO => Pass state setter to QuantitySelector
-    // TODO => Update state in redux store
-    // TODO => Post state on checkout form submission
-
-    Wrap the quantity selector in a form tag:
-    - pass the price of the item to this modal
-    - dynamically calculate prices based on quantity changes
-    - clicking on checkout posts an update to all quantities
-        - closing the modal does not
-    - redirect to checkout
+    // TODO => hide checkout button when no cart items
+    // TODO => if all quantity is 0
+      - trigger handleRemoveAll
   */
 
   return (

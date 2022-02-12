@@ -12,7 +12,7 @@ const QuantitySelector = ({ quantity, setQuantity, location }) => {
     quantity < 99 && setQuantity((prevQuantity) => prevQuantity + 1);
 
   return (
-    quantity && (
+    quantity >= 0 && (
       <div className="quantity-selector">
         <button
           className="quantity-selector__decrement"

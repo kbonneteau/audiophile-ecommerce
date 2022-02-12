@@ -19,7 +19,7 @@ const CartQuantity = ({ item, cartQuantity, dispatch, action }) => {
   }, [quantity, action, dispatch, item]);
 
   return (
-    quantity > 0 && (
+    quantity >= 0 && (
       <>
         <p>{item} </p>
         <QuantitySelector

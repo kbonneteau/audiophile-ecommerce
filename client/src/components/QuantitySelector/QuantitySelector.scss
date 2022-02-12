@@ -11,6 +11,10 @@
   width: 7.5rem;
 
   &__quantity {
+    &::-webkit-inner-spin-button,
+    &::-webkit-outer-spin-button {
+      display: none;
+    }
     @include button-input-reset;
     text-align: center;
     font-weight: 700;

@@ -1,3 +1,5 @@
+// Can update quantities + add item be combined?
+
 export const addItemToStore = (state, payload) => {
   return state.map((cart) => {
     return {
@@ -17,6 +19,10 @@ export const removeItemsFromStore = (state) => {
 };
 
 export const updateQuantitiesInStore = (state, payload) => {
-  console.log("Update items in store");
-  return state;
+  return state.map((cart) => {
+    return {
+      ...cart,
+      cartItems: payload.items,
+    };
+  });
 };

@@ -30,7 +30,6 @@ export const addCartItem = (items) => {
 };
 
 export const updateItemQuantity = (items) => {
-  console.log("action creator :: update");
   return {
     type: UPDATE_CART_QUANTITY,
     payload: {
@@ -40,7 +39,6 @@ export const updateItemQuantity = (items) => {
 };
 
 export const removeAllCartItems = () => {
-  console.log("remove all cart items");
   return {
     type: REMOVE_CART_ITEMS,
   };

@@ -1,7 +1,6 @@
 import axios from "axios";
 import { v4 as uuid } from "uuid";
 import { API_BASE_URL, API_CART } from "../../utils/apiUtils";
-// import action creators from conversations
 import {
   gotCart,
   addCartItem,
@@ -58,24 +57,18 @@ export const postCartItem = (cartId, cartItem) => async (dispatch) => {
   }
 };
 
-export const updateCartQuantities = (cartId, items) => async (dispatch) => {
-  console.log("Update cart quantities");
-  console.log(cartId);
-  console.log(items);
-  // const cartItems = [];
-  // for (const itemName in items) {
-  //   cartItems.push({ item: itemName, quantity: items[itemName] });
-  // }
-  // console.log(cartItems);
+export const updateCartQuantities = (cartId, cartItems) => async (dispatch) => {
   try {
     const result = await axios.put(
       `${API_BASE_URL}${API_CART}/${cartId}/quantity`,
       {
-        cartItems: items,
+        cartItems: cartItems,
       }
     );
-    console.log(result);
-    // dispatch(updateItemQuantity());
+    const { items } = result.data;
+    if (items) {
+      dispatch(updateItemQuantity(items));
+    }
   } catch (error) {
     console.error(error);
   }
