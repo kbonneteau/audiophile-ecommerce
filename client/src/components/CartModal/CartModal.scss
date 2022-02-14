@@ -15,8 +15,13 @@
   padding: 2rem 1.75rem;
 
   @include tablet {
-    // right: 2.5rem;
     margin-right: 2.5rem;
+    max-width: 23.5625rem;
+  }
+
+  @include desktop {
+    margin-right: 0;
+    right: 12.5vw;
   }
 
   &__overlay {
@@ -64,6 +69,7 @@
   &__cost {
     font-weight: 700;
     margin: 0;
+    font-size: 1.125rem;
   }
 
   &__checkout {
