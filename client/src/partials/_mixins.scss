@@ -50,6 +50,11 @@
   align-items: center;
 }
 
+@mixin flex-spaced {
+  display: flex;
+  justify-content: space-between;
+}
+
 // Button styles
 @mixin button-input-reset {
   background: none;
@@ -60,6 +65,7 @@
 
 @mixin primary-button {
   @include subtitle-text;
+  cursor: pointer;
   color: $light-text;
   background-color: $primary-accent;
   padding: calc((3rem - 1.5625rem) / 2) 2rem; // (max container size - line height) / 2
@@ -75,6 +81,7 @@
 
 @mixin secondary-button {
   color: $dark-text;
+  cursor: pointer;
   border: 2px solid $dark-text;
   padding: 1rem 0;
   width: 10rem;

@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import "./CartModal.scss";
-import CartQuantity from "../CartQuantity/CartQuantity";
+import CartItem from "../CartItem/CartItem";
 import {
   deleteCartItems,
   updateCartQuantities,
@@ -95,10 +95,17 @@ const CartModal = ({ isOpen, onClose, cartId, cartItems }) => {
       <>
         <div className="cart-modal__overlay" />
         <div className="cart-modal">
-          <h2>Cart</h2>
-          <button onClick={handleRemoveAll}>Remove all items</button>
+          <div className="cart-modal__title-container">
+            <h2 className="cart-modal__overview">Cart ({items.length})</h2>
+            <button
+              className="cart-modal__remove-items"
+              onClick={handleRemoveAll}
+            >
+              Remove all
+            </button>
+          </div>
           {items.map((item, i) => (
-            <CartQuantity
+            <CartItem
               key={i}
               item={item.item}
               cartQuantity={item.quantity}
@@ -106,7 +113,13 @@ const CartModal = ({ isOpen, onClose, cartId, cartItems }) => {
               action={ACTIONS.UPDATE_QUANTITY}
             />
           ))}
-          <button onClick={handleCheckout}>Checkout</button>
+          <div className="cart-modal__subtotal-container">
+            <p className="cart-modal__subtotal">Total</p>
+            <p className="cart-modal__cost">$0</p>
+          </div>
+          <button className="cart-modal__checkout" onClick={handleCheckout}>
+            Checkout
+          </button>
         </div>
       </>
     )

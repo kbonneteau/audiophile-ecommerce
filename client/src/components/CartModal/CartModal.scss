@@ -7,8 +7,53 @@
 
 .cart-modal {
   @extend .navigation-modal;
+  top: 7.125rem;
+  border-radius: 0.5rem;
+  max-width: 20.4375rem;
+  padding: 2rem 1.75rem;
 
   &__overlay {
     @extend .navigation-modal__overlay;
+  }
+
+  &__title-container {
+    @include flex-spaced;
+  }
+
+  &__overview {
+    @include text($site-font, 1.125rem, 700, 1, 1.29px);
+  }
+
+  &__remove-items {
+    @include button-input-reset;
+    text-decoration: underline;
+    font-weight: 500;
+    color: $alt-text;
+    cursor: pointer;
+
+    &:hover {
+      color: $primary-accent;
+    }
+  }
+
+  &__checkout {
+    @include primary-button;
+    border: none;
+    width: 100%;
+  }
+
+  &__subtotal-container {
+    @include flex-spaced;
+  }
+
+  &__subtotal {
+    line-height: 1.5rem;
+    color: $alt-text;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  &__cost {
+    font-weight: 700;
   }
 }

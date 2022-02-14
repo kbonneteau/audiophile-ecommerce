@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import QuantitySelector from "../QuantitySelector/QuantitySelector";
 
-const CartQuantity = ({ item, cartQuantity, dispatch, action }) => {
+const CartItem = ({ item, cartQuantity, dispatch, action }) => {
   const [quantity, setQuantity] = useState(cartQuantity);
   const quantityRef = useRef(cartQuantity);
 
@@ -32,4 +32,4 @@ const CartQuantity = ({ item, cartQuantity, dispatch, action }) => {
   );
 };
 
-export default CartQuantity;
+export default CartItem;

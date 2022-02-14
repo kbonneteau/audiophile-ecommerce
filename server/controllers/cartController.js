@@ -36,7 +36,7 @@ const cartController = {
   updateCartItems: async (req, res) => {
     const { cartId } = req.params;
     // NOTE: these variables may change in the future
-    const { item, quantity } = req.body;
+    const { image, item, quantity } = req.body;
 
     const foundCart = await cartModel.readCart(cartId);
     const itemIndex = foundCart[0].cartItems.findIndex(
@@ -57,7 +57,7 @@ const cartController = {
     } else {
       allCartItems = [
         ...foundCart[0].cartItems,
-        { item, quantity: Number(quantity) },
+        { image, item, quantity: Number(quantity) },
       ];
     }
 

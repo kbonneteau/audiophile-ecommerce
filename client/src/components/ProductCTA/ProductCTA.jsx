@@ -32,7 +32,10 @@ const ProductCTA = ({ product }) => {
           displayType={"text"}
           thousandSeparator={true}
         />
-        <ProductQuantityForm slug={product.slug} />
+        <ProductQuantityForm
+          name={product.shortName}
+          image={product.categoryImage.mobile}
+        />
       </div>
     </section>
   );

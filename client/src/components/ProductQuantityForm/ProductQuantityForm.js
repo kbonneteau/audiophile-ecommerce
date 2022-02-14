@@ -4,7 +4,7 @@ import "./ProductQuantityForm.scss";
 import QuantitySelector from "../QuantitySelector/QuantitySelector";
 import { postCartItem } from "../../store/utils/thunkCreators";
 
-const ProductQuantityForm = ({ slug }) => {
+const ProductQuantityForm = ({ image, name }) => {
   const cartId = useSelector((state) => state.cart[0].cartId);
   const dispatch = useDispatch();
   const [quantity, setQuantity] = useState(1);
@@ -12,7 +12,11 @@ const ProductQuantityForm = ({ slug }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(
-      postCartItem(cartId, { item: slug, quantity: e.target.quantity.value })
+      postCartItem(cartId, {
+        image: image,
+        item: name,
+        quantity: e.target.quantity.value,
+      })
     );
     setQuantity(1);
   };
