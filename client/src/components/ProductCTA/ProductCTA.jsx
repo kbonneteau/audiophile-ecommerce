@@ -34,6 +34,7 @@ const ProductCTA = ({ product }) => {
         />
         <ProductQuantityForm
           name={product.shortName}
+          price={product.price}
           image={product.categoryImage.mobile}
         />
       </div>

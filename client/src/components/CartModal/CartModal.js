@@ -1,6 +1,7 @@
 import React, { useEffect, useReducer, useMemo } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import NumberFormat from "react-number-format";
 
 import "./CartModal.scss";
 import CartItem from "../CartItem/CartItem";
@@ -62,11 +63,13 @@ const CartModal = ({ isOpen, onClose, cartId, cartItems }) => {
     // Add each of the cart items to component state
     if (items.length > 0) {
       items.forEach((cartItem) => {
-        const { item, quantity } = cartItem;
+        const { image, item, price, quantity } = cartItem;
         dispatch({
           type: ACTIONS.ADD_ITEM_TO_STATE,
           payload: {
+            image,
             item,
+            price,
             quantity,
           },
         });
@@ -107,7 +110,9 @@ const CartModal = ({ isOpen, onClose, cartId, cartItems }) => {
           {items.map((item, i) => (
             <CartItem
               key={i}
+              image={item.image}
               item={item.item}
+              price={item.price}
               cartQuantity={item.quantity}
               dispatch={dispatch}
               action={ACTIONS.UPDATE_QUANTITY}
@@ -115,6 +120,13 @@ const CartModal = ({ isOpen, onClose, cartId, cartItems }) => {
           ))}
           <div className="cart-modal__subtotal-container">
             <p className="cart-modal__subtotal">Total</p>
+            {/* <NumberFormat
+              className="cart-item__price"
+              value={price}
+              prefix="$"
+              displayType={"text"}
+              thousandSeparator={true}
+            /> */}
             <p className="cart-modal__cost">$0</p>
           </div>
           <button className="cart-modal__checkout" onClick={handleCheckout}>
