@@ -14,6 +14,11 @@
   max-width: 20.4375rem;
   padding: 2rem 1.75rem;
 
+  @include tablet {
+    // right: 2.5rem;
+    margin-right: 2.5rem;
+  }
+
   &__overlay {
     @extend .navigation-modal__overlay;
   }

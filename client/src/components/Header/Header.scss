@@ -27,6 +27,7 @@
       gap: 2.625rem;
       max-width: $max-content-width;
       flex-grow: 1;
+      justify-content: flex-start;
     }
 
     @include desktop {
@@ -89,6 +90,10 @@
 
     &:hover {
       filter: $icon-hover-filter;
+    }
+
+    @include tablet {
+      margin-left: auto;
     }
   }
 }
