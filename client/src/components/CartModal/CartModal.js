@@ -107,27 +107,28 @@ const CartModal = ({ isOpen, onClose, cartId, cartItems }) => {
               Remove all
             </button>
           </div>
-          {items.map((item, i) => (
-            <CartItem
-              key={i}
-              image={item.image}
-              item={item.item}
-              price={item.price}
-              cartQuantity={item.quantity}
-              dispatch={dispatch}
-              action={ACTIONS.UPDATE_QUANTITY}
-            />
-          ))}
+          <div className="cart-modal__items">
+            {items.map((item, i) => (
+              <CartItem
+                key={i}
+                image={item.image}
+                item={item.item}
+                price={item.price}
+                cartQuantity={item.quantity}
+                dispatch={dispatch}
+                action={ACTIONS.UPDATE_QUANTITY}
+              />
+            ))}
+          </div>
           <div className="cart-modal__subtotal-container">
             <p className="cart-modal__subtotal">Total</p>
-            {/* <NumberFormat
-              className="cart-item__price"
-              value={price}
+            <NumberFormat
+              className="cart-modal__cost"
+              value={0}
               prefix="$"
               displayType={"text"}
               thousandSeparator={true}
-            /> */}
-            <p className="cart-modal__cost">$0</p>
+            />
           </div>
           <button className="cart-modal__checkout" onClick={handleCheckout}>
             Checkout

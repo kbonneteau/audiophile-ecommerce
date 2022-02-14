@@ -4,17 +4,29 @@
 @use "../../partials/keyframes" as *;
 
 .cart-item {
+  width: 100%;
   display: flex;
-  justify-content: space-between;
   align-items: center;
 
   &__thumbnail {
     height: 4rem;
+    width: 4rem;
+    object-fit: cover;
     border-radius: 0.5rem;
+  }
+
+  &__details {
+    margin-left: 1rem;
   }
 
   &__name {
     font-weight: 700;
     line-height: 1.5rem;
+    margin: 0;
+  }
+
+  &__price {
+    color: $alt-text;
+    font-weight: 600;
   }
 }

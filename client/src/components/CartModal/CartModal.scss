@@ -8,6 +8,8 @@
 .cart-modal {
   @extend .navigation-modal;
   top: 7.125rem;
+  left: 0;
+  margin: 0 auto;
   border-radius: 0.5rem;
   max-width: 20.4375rem;
   padding: 2rem 1.75rem;
@@ -36,10 +38,10 @@
     }
   }
 
-  &__checkout {
-    @include primary-button;
-    border: none;
-    width: 100%;
+  &__items {
+    @include flex-centered-column;
+    gap: 1.5rem;
+    margin: 2rem 0;
   }
 
   &__subtotal-container {
@@ -51,9 +53,18 @@
     color: $alt-text;
     text-transform: uppercase;
     font-weight: 500;
+    margin: 0;
   }
 
   &__cost {
     font-weight: 700;
+    margin: 0;
+  }
+
+  &__checkout {
+    @include primary-button;
+    border: none;
+    width: 100%;
+    margin-top: 1.5rem;
   }
 }

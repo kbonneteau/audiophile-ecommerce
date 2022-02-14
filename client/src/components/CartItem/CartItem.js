@@ -27,14 +27,16 @@ const CartItem = (props) => {
     quantity >= 0 && (
       <div className="cart-item">
         <img className="cart-item__thumbnail" src={image} alt={item} />
-        <p className="cart-item__name">{item} </p>
-        <NumberFormat
-          className="cart-item__price"
-          value={price}
-          prefix="$"
-          displayType={"text"}
-          thousandSeparator={true}
-        />
+        <div className="cart-item__details">
+          <p className="cart-item__name">{item} </p>
+          <NumberFormat
+            className="cart-item__price"
+            value={price}
+            prefix="$"
+            displayType={"text"}
+            thousandSeparator={true}
+          />
+        </div>
         <QuantitySelector
           quantity={quantity}
           setQuantity={setQuantity}

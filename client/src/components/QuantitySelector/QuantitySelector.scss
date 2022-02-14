@@ -10,6 +10,13 @@
   height: 3rem;
   width: 7.5rem;
 
+  &--cart {
+    height: 2rem;
+    width: 6rem;
+    margin-left: auto;
+    // padding: 0 7.5px;
+  }
+
   &__quantity {
     &::-webkit-inner-spin-button,
     &::-webkit-outer-spin-button {
@@ -34,7 +41,7 @@
     height: 100%;
 
     &:hover {
-      color: $dark-text;
+      color: $primary-accent;
     }
   }
 }

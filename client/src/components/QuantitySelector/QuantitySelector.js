@@ -13,7 +13,13 @@ const QuantitySelector = ({ quantity, setQuantity, location }) => {
 
   return (
     quantity >= 0 && (
-      <div className="quantity-selector">
+      <div
+        className={
+          location === "cart"
+            ? "quantity-selector quantity-selector--cart"
+            : "quantity-selector"
+        }
+      >
         <button
           className="quantity-selector__decrement"
           type="button"
