@@ -16,7 +16,6 @@ const HomePage = () => {
 
   return (
     <main>
-      <Link to="/checkout">Test Checkout</Link>
       <Hero />
       <ProductCategoryList />
       <FeaturedProducts />

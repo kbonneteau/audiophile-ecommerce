@@ -6,6 +6,7 @@
 .pnp.js
 data.json
 dbconnection.txt
+backup.js
 
 # testing
 /coverage

@@ -9,11 +9,13 @@ import {
   deleteCartItems,
   updateCartQuantities,
 } from "../../store/utils/thunkCreators";
+import { calculateCart } from "../../utils/cartUtils";
 
 const ACTIONS = {
   ADD_ITEM_TO_STATE: "ADD_ITEM_TO_STATE",
   UPDATE_QUANTITY: "UPDATE_QUANTITY",
   RESET_STATE: "RESET_STATE",
+  REMOVE_ALL_ITEMS: "REMOVE_ALL_ITEMS",
 };
 
 const initialState = {
@@ -23,13 +25,16 @@ const initialState = {
 const reducer = (state, action) => {
   switch (action.type) {
     case ACTIONS.ADD_ITEM_TO_STATE:
+      const { image, item, quantity, price } = action.payload;
       return {
         ...state,
         items: [
           ...state.items,
           {
-            item: action.payload.item,
-            quantity: action.payload.quantity,
+            image,
+            item,
+            quantity,
+            price,
           },
         ],
       };
@@ -45,6 +50,11 @@ const reducer = (state, action) => {
           }
           return item;
         }),
+      };
+    case ACTIONS.REMOVE_ALL_ITEMS:
+      return {
+        ...state,
+        items: [],
       };
     default:
       return state;
@@ -75,10 +85,11 @@ const CartModal = ({ isOpen, onClose, cartId, cartItems }) => {
         });
       });
     }
-  }, [items]);
+  }, [cartItems]);
 
   const handleRemoveAll = () => {
     reduxDispatch(deleteCartItems(cartId));
+    dispatch({ type: ACTIONS.REMOVE_ALL_ITEMS });
   };
 
   const handleCheckout = async () => {
@@ -88,6 +99,7 @@ const CartModal = ({ isOpen, onClose, cartId, cartItems }) => {
   };
 
   /*
+    // ✅ TODO => Update the cart cost every time the quantity changes
     // TODO => hide checkout button when no cart items
     // TODO => if all quantity is 0
       - trigger handleRemoveAll
@@ -99,7 +111,9 @@ const CartModal = ({ isOpen, onClose, cartId, cartItems }) => {
         <div className="cart-modal__overlay" />
         <div className="cart-modal">
           <div className="cart-modal__title-container">
-            <h2 className="cart-modal__overview">Cart ({items.length})</h2>
+            <h2 className="cart-modal__overview">
+              Cart ({state.items.length})
+            </h2>
             <button
               className="cart-modal__remove-items"
               onClick={handleRemoveAll}
@@ -108,7 +122,7 @@ const CartModal = ({ isOpen, onClose, cartId, cartItems }) => {
             </button>
           </div>
           <div className="cart-modal__items">
-            {items.map((item, i) => (
+            {state.items.map((item, i) => (
               <CartItem
                 key={i}
                 image={item.image}
@@ -124,7 +138,7 @@ const CartModal = ({ isOpen, onClose, cartId, cartItems }) => {
             <p className="cart-modal__subtotal">Total</p>
             <NumberFormat
               className="cart-modal__cost"
-              value={0}
+              value={calculateCart(state.items)}
               prefix="$"
               displayType={"text"}
               thousandSeparator={true}
