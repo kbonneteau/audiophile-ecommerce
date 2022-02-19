@@ -78,4 +78,25 @@
     width: 100%;
     margin-top: 1.5rem;
   }
+
+  &__empty {
+    @include flex-centered-column;
+    padding-top: 2rem;
+  }
+
+  &__icon {
+    height: 3rem;
+  }
+
+  &__cta {
+    text-align: center;
+  }
+
+  &__link {
+    color: $alt-text;
+
+    &:hover {
+      color: $primary-accent;
+    }
+  }
 }

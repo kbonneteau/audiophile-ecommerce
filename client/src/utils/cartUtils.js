@@ -3,6 +3,5 @@ export const calculateCart = (items) => {
   items.forEach((item) => {
     cost += item.price * item.quantity;
   });
-  console.log(cost);
   return cost;
 };
