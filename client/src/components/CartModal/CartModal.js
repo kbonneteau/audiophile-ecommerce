@@ -110,7 +110,7 @@ const CartModal = ({ isOpen, onClose, cartId, cartItems }) => {
   return (
     isOpen && (
       <>
-        <div className="cart-modal__overlay" />
+        <div className="cart-modal__overlay" onClick={onClose} />
         <div className="cart-modal">
           <div className="cart-modal__title-container">
             <h2 className="cart-modal__overview">
@@ -159,7 +159,11 @@ const CartModal = ({ isOpen, onClose, cartId, cartItems }) => {
               <img className="cart-modal__icon" src={cartIcon} alt="" />
               <p className="cart-modal__cta">
                 Your cart is empty! Discover some of our{" "}
-                <Link to="/headphones" className="cart-modal__link">
+                <Link
+                  to="/headphones"
+                  className="cart-modal__link"
+                  onClick={onClose}
+                >
                   premium audio experiences.
                 </Link>
               </p>
