@@ -29,7 +29,7 @@ const Routes = (props) => {
           path="/:categoryName/:productSlug"
           element={<ProductDetailsPage />}
         />
-        <Route path="/checkout" element={<CheckoutPage />} />
+        <Route path="/checkout/:cartId" element={<CheckoutPage />} />
       </Switch>
       <Footer />
     </>

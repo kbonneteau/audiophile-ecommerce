@@ -95,7 +95,7 @@ const CartModal = ({ isOpen, onClose, cartId, cartItems }) => {
 
   const handleCheckout = async () => {
     await reduxDispatch(updateCartQuantities(cartId, state.items));
-    navigate("/checkout");
+    navigate(`/checkout/${cartId}`);
     onClose();
   };
 

@@ -32,7 +32,7 @@ const addCart = async (cartId) => {
     const cart = await db.collection("carts").insertOne({
       cartId: cartId,
       user: "guest",
-      taxRate: 0.07,
+      taxRate: 0.2,
       shippingMethod: "standard",
       cartItems: [],
     });

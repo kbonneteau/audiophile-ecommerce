@@ -9,7 +9,7 @@ import cart from "./cart";
 // ✅ TODO: Set up DB cart collection
 // ✅ TODO: Set up DB seed for testing and resetting data
 // ✅ TODO: Set up Redux for removing cart items (cart modal)
-// TODO: Set up Redux for updating existing cart items (cart modal)
+// ✅ TODO: Set up Redux for updating existing cart items (cart modal)
 
 const appReducer = combineReducers({ cart });
 

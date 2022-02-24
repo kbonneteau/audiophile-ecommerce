@@ -20,7 +20,7 @@ const seed = async () => {
       {
         cartId: "44a4ad0c-8422-42af-89be-df2e7ae521d7",
         user: "guest",
-        taxRate: 0.07,
+        taxRate: 0.2,
         shippingMethod: "standard",
         cartItems: [],
       },

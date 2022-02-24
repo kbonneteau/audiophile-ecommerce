@@ -22,39 +22,6 @@
     font-size: 1.125rem;
   }
 
-  &__item-container {
-    width: 100%;
-    display: flex;
-    gap: 1rem;
-  }
-
-  &__icon {
-    width: 4rem;
-    height: 4rem;
-    object-fit: cover;
-    border-radius: 0.5rem;
-  }
-
-  &__item-details {
-    flex-grow: 1;
-  }
-
-  &__product-name {
-    font-size: 0.9375rem;
-  }
-
-  &__product-price {
-    margin: 0;
-    color: $alt-text;
-  }
-
-  &__quantity {
-    font-size: 0.9375rem;
-    color: $alt-text;
-    margin: 0;
-    line-height: 2.25rem;
-  }
-
   &__cost-roundup {
     width: 100%;
     display: flex;

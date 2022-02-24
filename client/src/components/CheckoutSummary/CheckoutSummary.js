@@ -1,62 +1,30 @@
-import "./CheckoutSummary.scss";
-import React from "react";
+import React, { useMemo } from "react";
+import { useSelector } from "react-redux";
 import NumberFormat from "react-number-format";
 
-const MOCK_CART = [
-  {
-    name: "XX99 MK II",
-    image:
-      "http://localhost:8080/images/shared/mobile/image-xx99-mark-two-headphones.jpg",
-    price: 2999,
-    quantity: 1,
-  },
-  {
-    name: "XX59",
-    image:
-      "http://localhost:8080/images/shared/mobile/image-xx59-headphones.jpg",
-    price: 899,
-    quantity: 2,
-  },
-  {
-    name: "YX1",
-    image:
-      "http://localhost:8080/images/products/product-yx1-earphones/mobile/image-product.jpg",
-    price: 599,
-    quantity: 1,
-  },
-];
+import "./CheckoutSummary.scss";
+import { calculateTotalCost } from "../../utils/cartUtils";
+import CartSummaryItem from "../CartSummaryItem/CartSummaryItem";
 
 const CheckoutSummary = () => {
-  return (
+  const cart = useSelector((state) => state.cart[0]);
+  const cost = useMemo(
+    () => calculateTotalCost(cart.cartItems, cart.shippingMethod, cart.taxRate),
+    [cart]
+  );
+
+  return !cart ? null : (
     <article className="checkout-summary">
       <h2 className="checkout-summary__title">Summary</h2>
-      {/* map through items */}
-      {MOCK_CART.map((cartItem) => (
-        <div key={cartItem.name} className="checkout-summary__item-container">
-          <img
-            className="checkout-summary__icon"
-            src={cartItem.image}
-            alt="icon"
-          />
-          <div className="checkout-summary__item-details">
-            <h3 className="checkout-summary__product-name">{cartItem.name}</h3>
-            <NumberFormat
-              className="checkout-summary__product-price"
-              value={cartItem.price}
-              prefix="$ "
-              displayType={"text"}
-              thousandSeparator={true}
-            />
-          </div>
-          <p className="checkout-summary__quantity">x{cartItem.quantity}</p>
-        </div>
+      {cart.cartItems.map((cartItem) => (
+        <CartSummaryItem key={cartItem.item} cartItem={cartItem} />
       ))}
       <div className="checkout-summary__cost-roundup">
         <p className="checkout-summary__total">
           Total
           <NumberFormat
             className="checkout-summary__cost"
-            value={5396}
+            value={cost.subtotal}
             prefix="$ "
             displayType={"text"}
             thousandSeparator={true}
@@ -66,7 +34,7 @@ const CheckoutSummary = () => {
           Shipping{" "}
           <NumberFormat
             className="checkout-summary__cost"
-            value={50}
+            value={cost.shipping}
             prefix="$ "
             displayType={"text"}
             thousandSeparator={true}
@@ -76,20 +44,23 @@ const CheckoutSummary = () => {
           VAT (included){" "}
           <NumberFormat
             className="checkout-summary__cost"
-            value={1079}
+            value={cost.tax}
             prefix="$ "
             displayType={"text"}
             thousandSeparator={true}
+            decimalScale={2}
+            fixedDecimalScale={true}
           />
         </p>
         <p className="checkout-summary__total checkout-summary__total--grand">
           Grand total
           <NumberFormat
             className="checkout-summary__cost checkout-summary__cost--total"
-            value={5446}
+            value={cost.total}
             prefix="$ "
             displayType={"text"}
             thousandSeparator={true}
+            decimalScale={2}
           />
         </p>
       </div>

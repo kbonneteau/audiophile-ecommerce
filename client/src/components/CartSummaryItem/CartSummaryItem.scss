@@ -1,0 +1,37 @@
+@use "../../partials/typography" as *;
+@use "../../partials/mixins" as *;
+@use "../../partials/variables" as *;
+@use "../../partials/keyframes" as *;
+
+.summary-item {
+  width: 100%;
+  display: flex;
+  gap: 1rem;
+
+  &__icon {
+    width: 4rem;
+    height: 4rem;
+    object-fit: cover;
+    border-radius: 0.5rem;
+  }
+
+  &__item-details {
+    flex-grow: 1;
+  }
+
+  &__product-name {
+    font-size: 0.9375rem;
+  }
+
+  &__product-price {
+    margin: 0;
+    color: $alt-text;
+  }
+
+  &__quantity {
+    font-size: 0.9375rem;
+    color: $alt-text;
+    margin: 0;
+    line-height: 2.25rem;
+  }
+}
