@@ -11,6 +11,8 @@ const getPrismaClient = () => {
     prisma = new PrismaClient({
       log: ['query', 'info', 'warn', 'error'],
     });
+    // Ensure connection is established
+    prisma.$connect().catch(console.error);
   }
   return prisma;
 };

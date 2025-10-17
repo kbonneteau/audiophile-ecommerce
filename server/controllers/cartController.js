@@ -39,14 +39,19 @@ const cartController = {
     const { image, item, price, quantity } = req.body;
 
     const foundCart = await cartModel.readCart(cartId);
-    const itemIndex = foundCart[0].cartItems.findIndex(
+    if (!foundCart) {
+      res.status(404).json({ error: "Cart not found" });
+      return;
+    }
+
+    const itemIndex = foundCart.cartItems.findIndex(
       (cartItem) => cartItem.item === item
     );
 
     let allCartItems = [];
 
     if (itemIndex >= 0) {
-      allCartItems = foundCart[0].cartItems.map((cartItem, i) =>
+      allCartItems = foundCart.cartItems.map((cartItem, i) =>
         itemIndex === i
           ? {
               ...cartItem,
@@ -56,14 +61,14 @@ const cartController = {
       );
     } else {
       allCartItems = [
-        ...foundCart[0].cartItems,
+        ...foundCart.cartItems,
         { image, item, price, quantity: Number(quantity) },
       ];
     }
 
     console.log("all cart items", allCartItems);
     const result = await cartModel.updateCart(cartId, allCartItems);
-    if (!result.modifiedCount) {
+    if (!result) {
       res.status(404).json({ error: "Cart not found" });
     } else {
       res.status(200).json({ items: allCartItems });
@@ -76,7 +81,7 @@ const cartController = {
     const updatedCartItems = cartItems.filter((item) => item.quantity > 0);
     const result = await cartModel.updateCart(cartId, updatedCartItems);
 
-    if (!result.modifiedCount) {
+    if (!result) {
       res.status(404).json({ error: "Cart not found" });
     } else {
       res.status(200).json({ items: updatedCartItems });
@@ -86,7 +91,7 @@ const cartController = {
   deleteCartItems: async (req, res) => {
     const { cartId } = req.params;
     const result = await cartModel.updateCart(cartId, []); // reset cart to empty array
-    if (!result.modifiedCount) {
+    if (!result) {
       res.status(404).json({ error: "Cart not found" });
     } else {
       res.status(200).json({ items: [] });

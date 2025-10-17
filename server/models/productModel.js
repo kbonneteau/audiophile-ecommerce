@@ -1,14 +1,13 @@
-const { MongoClient } = require("mongodb");
-const { connectToDatabase } = require("../db/connect-to-database");
+const { getPrismaClient } = require("../db/prisma-client");
 
 /**
- * Connects to database to read all products.
+ * Reads all products from the database using Prisma.
  * @returns {array} of all products
  */
 const readAllProducts = async () => {
   try {
-    const db = await connectToDatabase();
-    return await db.collection("products").find({}).toArray();
+    const prisma = getPrismaClient();
+    return await prisma.product.findMany();
   } catch (error) {
     console.log("error in reading products");
     console.log(error);
@@ -17,20 +16,19 @@ const readAllProducts = async () => {
 };
 
 /**
- * Connects to database to read all products of the specified category.
+ * Reads all products of the specified category using Prisma.
  * @param {string} category name of product category
  * @returns {array} of all products by category
  */
 const readProductsByCategory = async (category) => {
   try {
-    const db = await connectToDatabase();
-    const results = await db
-      .collection("products")
-      .find({ category: category })
-      .toArray();
-    return results;
-  } catch {
+    const prisma = getPrismaClient();
+    return await prisma.product.findMany({
+      where: { category: category }
+    });
+  } catch (error) {
     console.log("error in reading products");
+    console.log(error);
     return false;
   }
 };
