@@ -46,7 +46,7 @@ export const removeAllCartItems = () => {
 
 // REDUCER
 
-const reducer = (state = {}, action) => {
+const reducer = (state = { cartItems: [] }, action) => {
   switch (action.type) {
     case GET_CART:
       return action.cart;

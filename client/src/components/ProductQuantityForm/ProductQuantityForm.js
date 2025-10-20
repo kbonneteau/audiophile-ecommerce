@@ -5,7 +5,7 @@ import QuantitySelector from "../QuantitySelector/QuantitySelector";
 import { postCartItem } from "../../store/utils/thunkCreators";
 
 const ProductQuantityForm = ({ image, name, price }) => {
-  const cartId = useSelector((state) => state.cart[0].cartId);
+  const cartId = useSelector((state) => state.cart.cartId);
   const dispatch = useDispatch();
   const [quantity, setQuantity] = useState(1);
 

@@ -7,7 +7,7 @@ import { calculateTotalCost } from "../../utils/cartUtils";
 import CartSummaryItem from "../CartSummaryItem/CartSummaryItem";
 
 const CheckoutSummary = () => {
-  const cart = useSelector((state) => state.cart[0]);
+  const cart = useSelector((state) => state.cart);
   const cost = useMemo(
     () => calculateTotalCost(cart.cartItems, cart.shippingMethod, cart.taxRate),
     [cart]

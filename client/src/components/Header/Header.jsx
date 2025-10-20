@@ -10,7 +10,7 @@ import NavModal from "../NavModal/NavModal";
 import CartModal from "../CartModal/CartModal";
 
 const Header = () => {
-  const cart = useSelector((state) => state.cart[0]);
+  const cart = useSelector((state) => state.cart);
   const [navOpen, setNavOpen] = useState(false);
   const [cartOpen, setCartOpen] = useState(false);
   const handleNavToggle = () => setNavOpen((prevState) => !prevState);
